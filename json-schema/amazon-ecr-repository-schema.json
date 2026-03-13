@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.apis.io/schemas/amazon-ecr-repository.json",
+  "title": "Amazon ECR Repository",
+  "description": "Schema representing an Amazon Elastic Container Registry repository, which stores Docker container images and OCI artifacts.",
+  "type": "object",
+  "required": [
+    "repositoryName"
+  ],
+  "properties": {
+    "repositoryArn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) that identifies the repository.",
+      "pattern": "^arn:aws[a-zA-Z-]*:ecr:[a-z0-9-]+:[0-9]{12}:repository/.+$"
+    },
+    "registryId": {
+      "type": "string",
+      "description": "The AWS account ID associated with the registry that contains the repository.",
+      "pattern": "^[0-9]{12}$"
+    },
+    "repositoryName": {
+      "type": "string",
+      "description": "The name of the repository.",
+      "minLength": 2,
+      "maxLength": 256,
+      "pattern": "^(?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._-][a-z0-9]+)*$"
+    },
+    "repositoryUri": {
+      "type": "string",
+      "description": "The URI for the repository, used for docker pull and push operations.",
+      "format": "uri"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time, in JavaScript date format, when the repository was created."
+    },
+    "imageTagMutability": {
+      "type": "string",
+      "description": "The tag mutability setting for the repository. When set to IMMUTABLE, all image tags within the repository are prevented from being overwritten.",
+      "enum": [
+        "MUTABLE",
+        "IMMUTABLE"
+      ],
+      "default": "MUTABLE"
+    },
+    "imageScanningConfiguration": {
+      "type": "object",
+      "description": "The image scanning configuration for the repository.",
+      "properties": {
+        "scanOnPush": {
+          "type": "boolean",
+          "description": "The setting that determines whether images are scanned after being pushed to a repository.",
+          "default": false
+        }
+      }
+    },
+    "encryptionConfiguration": {
+      "type": "object",
+      "description": "The encryption configuration for the repository.",
+      "required": [
+        "encryptionType"
+      ],
+      "properties": {
+        "encryptionType": {
+          "type": "string",
+          "description": "The encryption type to use.",
+          "enum": [
+            "AES256",
+            "KMS"
+          ]
+        },
+        "kmsKey": {
+          "type": "string",
+          "description": "If you use the KMS encryption type, specify the KMS key to use for encryption."
+        }
+      }
+    },
+    "imageCount": {
+      "type": "integer",
+      "description": "The number of images in the repository.",
+      "minimum": 0
+    },
+    "repositoryPolicy": {
+      "type": "string",
+      "description": "The JSON repository policy text associated with the repository."
+    },
+    "lifecyclePolicy": {
+      "type": "object",
+      "description": "The lifecycle policy for the repository.",
+      "properties": {
+        "lifecyclePolicyText": {
+          "type": "string",
+          "description": "The JSON lifecycle policy text."
+        },
+        "registryId": {
+          "type": "string",
+          "description": "The registry ID associated with the lifecycle policy."
+        },
+        "repositoryName": {
+          "type": "string",
+          "description": "The repository name associated with the lifecycle policy."
+        },
+        "lastEvaluatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time stamp of the last time the lifecycle policy was run."
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "description": "The metadata tags applied to the repository.",
+      "items": {
+        "type": "object",
+        "required": [
+          "Key",
+          "Value"
+        ],
+        "properties": {
+          "Key": {
+            "type": "string",
+            "description": "The key of the tag.",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "Value": {
+            "type": "string",
+            "description": "The value of the tag.",
+            "minLength": 0,
+            "maxLength": 256
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "aws": "https://aws.amazon.com/ecr/",
+    "ecr": "https://docs.aws.amazon.com/AmazonECR/latest/APIReference/",
+    "Repository": {
+      "@id": "aws:Repository",
+      "@type": "SoftwareApplication",
+      "@context": {
+        "repositoryArn": {
+          "@id": "aws:repositoryArn",
+          "@type": "@id"
+        },
+        "registryId": {
+          "@id": "aws:registryId",
+          "@type": "xsd:string"
+        },
+        "repositoryName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "repositoryUri": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "createdAt": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "imageTagMutability": {
+          "@id": "aws:imageTagMutability",
+          "@type": "xsd:string"
+        },
+        "imageScanningConfiguration": {
+          "@id": "aws:imageScanningConfiguration",
+          "@type": "@id"
+        },
+        "encryptionConfiguration": {
+          "@id": "aws:encryptionConfiguration",
+          "@type": "@id"
+        }
+      }
+    },
+    "Image": {
+      "@id": "aws:Image",
+      "@type": "DigitalDocument",
+      "@context": {
+        "imageDigest": {
+          "@id": "aws:imageDigest",
+          "@type": "xsd:string"
+        },
+        "imageTag": {
+          "@id": "aws:imageTag",
+          "@type": "xsd:string"
+        },
+        "imagePushedAt": {
+          "@id": "schema:datePublished",
+          "@type": "xsd:dateTime"
+        },
+        "imageSizeInBytes": {
+          "@id": "schema:contentSize",
+          "@type": "xsd:integer"
+        },
+        "imageManifestMediaType": {
+          "@id": "schema:encodingFormat",
+          "@type": "xsd:string"
+        }
+      }
+    },
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  }
+}

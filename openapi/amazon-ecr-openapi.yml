@@ -1,0 +1,365 @@
+openapi: 3.1.0
+info:
+  title: Amazon Elastic Container Registry (ECR) API
+  description: Amazon ECR is a fully managed container registry for storing, managing, sharing, and deploying container images and artifacts.
+  version: '2015-09-21'
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+    url: https://aws.amazon.com/ecr/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+  - url: https://api.ecr.amazonaws.com
+    description: Amazon ECR API endpoint
+paths:
+  /:
+    post:
+      operationId: createRepository
+      summary: Create Repository
+      description: Creates a repository in a registry. If the repository already exists, an exception is thrown.
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+                - repositoryName
+              properties:
+                repositoryName:
+                  type: string
+                  description: The name to use for the repository.
+                tags:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      Key:
+                        type: string
+                      Value:
+                        type: string
+                  description: The metadata to apply to the repository.
+                imageTagMutability:
+                  type: string
+                  enum:
+                    - MUTABLE
+                    - IMMUTABLE
+                  description: The tag mutability setting for the repository.
+                imageScanningConfiguration:
+                  type: object
+                  properties:
+                    scanOnPush:
+                      type: boolean
+                  description: The image scanning configuration for the repository.
+                encryptionConfiguration:
+                  type: object
+                  properties:
+                    encryptionType:
+                      type: string
+                      enum:
+                        - AES256
+                        - KMS
+                    kmsKey:
+                      type: string
+                  description: The encryption configuration for the repository.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AmazonEC2ContainerRegistry_V20150921.CreateRepository
+      responses:
+        '200':
+          description: Successful response with the created repository details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateRepositoryResponse'
+        '400':
+          description: Bad request error.
+  /#DescribeRepositories:
+    post:
+      operationId: describeRepositories
+      summary: Describe Repositories
+      description: Describes image repositories in a registry.
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                registryId:
+                  type: string
+                  description: The AWS account ID associated with the registry.
+                repositoryNames:
+                  type: array
+                  items:
+                    type: string
+                  description: A list of repositories to describe.
+                nextToken:
+                  type: string
+                  description: Pagination token from a previous request.
+                maxResults:
+                  type: integer
+                  description: The maximum number of repository results.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AmazonEC2ContainerRegistry_V20150921.DescribeRepositories
+      responses:
+        '200':
+          description: Successful response with repository details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeRepositoriesResponse'
+  /#DeleteRepository:
+    post:
+      operationId: deleteRepository
+      summary: Delete Repository
+      description: Deletes a repository. If the repository contains images, you must either delete all images or use the force option to delete the repository.
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+                - repositoryName
+              properties:
+                registryId:
+                  type: string
+                  description: The AWS account ID associated with the registry.
+                repositoryName:
+                  type: string
+                  description: The name of the repository to delete.
+                force:
+                  type: boolean
+                  description: If true, deleting the repository will force deletion of all contained images.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AmazonEC2ContainerRegistry_V20150921.DeleteRepository
+      responses:
+        '200':
+          description: Successful response with the deleted repository details.
+        '400':
+          description: Bad request error.
+  /#PutImage:
+    post:
+      operationId: putImage
+      summary: Put Image
+      description: Creates or updates the image manifest and tags associated with an image.
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+                - repositoryName
+                - imageManifest
+              properties:
+                registryId:
+                  type: string
+                  description: The AWS account ID associated with the registry.
+                repositoryName:
+                  type: string
+                  description: The name of the repository in which to put the image.
+                imageManifest:
+                  type: string
+                  description: The image manifest corresponding to the image to be uploaded.
+                imageManifestMediaType:
+                  type: string
+                  description: The media type of the image manifest.
+                imageTag:
+                  type: string
+                  description: The tag to associate with the image.
+                imageDigest:
+                  type: string
+                  description: The image digest of the image manifest.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AmazonEC2ContainerRegistry_V20150921.PutImage
+      responses:
+        '200':
+          description: Successful response with the image details.
+        '400':
+          description: Bad request error.
+  /#BatchGetImage:
+    post:
+      operationId: batchGetImage
+      summary: Batch Get Image
+      description: Gets detailed information for an image. Images are specified with either an imageTag or imageDigest.
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+                - repositoryName
+                - imageIds
+              properties:
+                registryId:
+                  type: string
+                  description: The AWS account ID associated with the registry.
+                repositoryName:
+                  type: string
+                  description: The repository that contains the images to get.
+                imageIds:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      imageDigest:
+                        type: string
+                      imageTag:
+                        type: string
+                  description: A list of image ID references to retrieve.
+                acceptedMediaTypes:
+                  type: array
+                  items:
+                    type: string
+                  description: The accepted media types for the request.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AmazonEC2ContainerRegistry_V20150921.BatchGetImage
+      responses:
+        '200':
+          description: Successful response with the image details.
+        '400':
+          description: Bad request error.
+  /#ListImages:
+    post:
+      operationId: listImages
+      summary: List Images
+      description: Lists all the image IDs for the specified repository.
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+                - repositoryName
+              properties:
+                registryId:
+                  type: string
+                  description: The AWS account ID associated with the registry.
+                repositoryName:
+                  type: string
+                  description: The repository with image IDs to be listed.
+                nextToken:
+                  type: string
+                  description: Pagination token from a previous request.
+                maxResults:
+                  type: integer
+                  description: The maximum number of image results.
+                filter:
+                  type: object
+                  properties:
+                    tagStatus:
+                      type: string
+                      enum:
+                        - TAGGED
+                        - UNTAGGED
+                        - ANY
+                  description: The filter key and value to filter on.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AmazonEC2ContainerRegistry_V20150921.ListImages
+      responses:
+        '200':
+          description: Successful response with image IDs.
+        '400':
+          description: Bad request error.
+components:
+  schemas:
+    CreateRepositoryResponse:
+      type: object
+      properties:
+        repository:
+          $ref: '#/components/schemas/Repository'
+    DescribeRepositoriesResponse:
+      type: object
+      properties:
+        repositories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Repository'
+        nextToken:
+          type: string
+    Repository:
+      type: object
+      properties:
+        repositoryArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the repository.
+        registryId:
+          type: string
+          description: The AWS account ID associated with the registry.
+        repositoryName:
+          type: string
+          description: The name of the repository.
+        repositoryUri:
+          type: string
+          description: The URI for the repository.
+        createdAt:
+          type: string
+          format: date-time
+          description: The date and time the repository was created.
+        imageTagMutability:
+          type: string
+          enum:
+            - MUTABLE
+            - IMMUTABLE
+          description: The tag mutability setting for the repository.
+        imageScanningConfiguration:
+          type: object
+          properties:
+            scanOnPush:
+              type: boolean
+          description: The image scanning configuration for the repository.
+        encryptionConfiguration:
+          type: object
+          properties:
+            encryptionType:
+              type: string
+            kmsKey:
+              type: string
+          description: The encryption configuration for the repository.
+  securitySchemes:
+    aws_sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication.
