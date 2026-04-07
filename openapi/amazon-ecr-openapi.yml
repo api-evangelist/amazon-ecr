@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Amazon Elastic Container Registry (ECR) API
+  title: Amazon ECR Amazon Elastic Container Registry (ECR) API
   description: Amazon ECR is a fully managed container registry for storing, managing, sharing, and deploying container images and artifacts.
   version: '2015-09-21'
   contact:
@@ -17,7 +17,7 @@ paths:
   /:
     post:
       operationId: createRepository
-      summary: Create Repository
+      summary: Amazon ECR Create Repository
       description: Creates a repository in a registry. If the repository already exists, an exception is thrown.
       requestBody:
         required: true
@@ -84,7 +84,7 @@ paths:
   /#DescribeRepositories:
     post:
       operationId: describeRepositories
-      summary: Describe Repositories
+      summary: Amazon ECR Describe Repositories
       description: Describes image repositories in a registry.
       requestBody:
         required: true
@@ -125,7 +125,7 @@ paths:
   /#DeleteRepository:
     post:
       operationId: deleteRepository
-      summary: Delete Repository
+      summary: Amazon ECR Delete Repository
       description: Deletes a repository. If the repository contains images, you must either delete all images or use the force option to delete the repository.
       requestBody:
         required: true
@@ -161,7 +161,7 @@ paths:
   /#PutImage:
     post:
       operationId: putImage
-      summary: Put Image
+      summary: Amazon ECR Put Image
       description: Creates or updates the image manifest and tags associated with an image.
       requestBody:
         required: true
@@ -207,7 +207,7 @@ paths:
   /#BatchGetImage:
     post:
       operationId: batchGetImage
-      summary: Batch Get Image
+      summary: Amazon ECR Batch Get Image
       description: Gets detailed information for an image. Images are specified with either an imageTag or imageDigest.
       requestBody:
         required: true
@@ -256,7 +256,7 @@ paths:
   /#ListImages:
     post:
       operationId: listImages
-      summary: List Images
+      summary: Amazon ECR List Images
       description: Lists all the image IDs for the specified repository.
       requestBody:
         required: true
