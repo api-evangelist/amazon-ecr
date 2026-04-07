@@ -5,13 +5,13 @@ url: https://aws.amazon.com/ecr/
 created: '2024-01-15'
 modified: '2026-03-16'
 tags:
-  - AWS
   - Amazon Web Services
-  - ECR
-  - Container Registry
-  - Docker
-  - Containers
+  - AWS
   - Container Images
+  - Container Registry
+  - Containers
+  - Docker
+  - ECR
   - OCI
 apis:
   - name: Amazon ECR API

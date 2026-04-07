@@ -122,6 +122,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeRepositoriesResponse'
+      tags:
+        - '#DescribeRepositories'
   /#DeleteRepository:
     post:
       operationId: deleteRepository
@@ -158,6 +160,8 @@ paths:
           description: Successful response with the deleted repository details.
         '400':
           description: Bad request error.
+      tags:
+        - '#DeleteRepository'
   /#PutImage:
     post:
       operationId: putImage
@@ -204,6 +208,8 @@ paths:
           description: Successful response with the image details.
         '400':
           description: Bad request error.
+      tags:
+        - '#PutImage'
   /#BatchGetImage:
     post:
       operationId: batchGetImage
@@ -253,6 +259,8 @@ paths:
           description: Successful response with the image details.
         '400':
           description: Bad request error.
+      tags:
+        - '#BatchGetImage'
   /#ListImages:
     post:
       operationId: listImages
@@ -302,6 +310,8 @@ paths:
           description: Successful response with image IDs.
         '400':
           description: Bad request error.
+      tags:
+        - '#ListImages'
 components:
   schemas:
     CreateRepositoryResponse:
@@ -363,3 +373,9 @@ components:
       name: Authorization
       in: header
       description: AWS Signature Version 4 authentication.
+tags:
+  - name: '#BatchGetImage'
+  - name: '#DeleteRepository'
+  - name: '#DescribeRepositories'
+  - name: '#ListImages'
+  - name: '#PutImage'
