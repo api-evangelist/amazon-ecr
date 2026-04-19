@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-ecr/refs/heads/main/json-schema/ecr-openapi-repository-schema.json",
+  "title": "Repository",
+  "description": "Repository schema from Amazon ECR Amazon Elastic Container Registry (ECR) API",
+  "type": "object",
+  "properties": {
+    "repositoryArn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) of the repository."
+    },
+    "registryId": {
+      "type": "string",
+      "description": "The AWS account ID associated with the registry."
+    },
+    "repositoryName": {
+      "type": "string",
+      "description": "The name of the repository."
+    },
+    "repositoryUri": {
+      "type": "string",
+      "description": "The URI for the repository."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the repository was created."
+    },
+    "imageTagMutability": {
+      "type": "string",
+      "enum": [
+        "MUTABLE",
+        "IMMUTABLE"
+      ],
+      "description": "The tag mutability setting for the repository."
+    },
+    "imageScanningConfiguration": {
+      "type": "object",
+      "properties": {
+        "scanOnPush": {
+          "type": "boolean"
+        }
+      },
+      "description": "The image scanning configuration for the repository."
+    },
+    "encryptionConfiguration": {
+      "type": "object",
+      "properties": {
+        "encryptionType": {
+          "type": "string"
+        },
+        "kmsKey": {
+          "type": "string"
+        }
+      },
+      "description": "The encryption configuration for the repository."
+    }
+  }
+}

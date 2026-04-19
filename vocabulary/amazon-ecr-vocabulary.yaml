@@ -1,0 +1,88 @@
+vocabulary: 1.0.0
+info:
+  provider: Amazon ECR
+  description: Unified vocabulary and taxonomy for Amazon ECR APIs covering operational and capability dimensions.
+  created: '2026-04-19'
+  modified: '2026-04-19'
+operational:
+  apis:
+  - name: Amazon ECR API
+    namespace: ecr
+    version: '2024'
+    status: active
+  resources:
+  - name: '#DescribeRepositories'
+    description: '#DescribeRepositories resources'
+  - name: '#ListImages'
+    description: '#ListImages resources'
+  - name: '#PutImage'
+    description: '#PutImage resources'
+  - name: '#BatchGetImage'
+    description: '#BatchGetImage resources'
+  - name: '#DeleteRepository'
+    description: '#DeleteRepository resources'
+  actions:
+  - name: create
+    pattern: write
+  - name: put
+    pattern: write
+  - name: describe
+    pattern: read
+  - name: batch
+    pattern: write
+  - name: delete
+    pattern: write
+  - name: list
+    pattern: read
+  schemas:
+    core:
+    - name: CreateRepositoryResponse
+      description: CreateRepositoryResponse schema
+    - name: DescribeRepositoriesResponse
+      description: DescribeRepositoriesResponse schema
+    - name: Repository
+      description: Repository schema
+  authentication:
+    schemes:
+    - AWS Signature Version 4
+    description: All API requests use AWS Signature Version 4 for authentication.
+capability:
+  workflows:
+  - name: Container Registry Management
+    file: capabilities/ecr-management.yaml
+    description: Workflow capability for Container Registry Management.
+  personas:
+  - id: cloud-engineer
+    name: Cloud Engineer
+    description: Engineers managing Amazon ECR resources on AWS.
+    workflows:
+    - Container Registry Management
+  domains:
+  - name: Container Registry Management
+    description: Container Registry Management business domain for Amazon ECR.
+crossReference:
+- resource: '#DescribeRepositories'
+  workflows:
+  - Container Registry Management
+  personas:
+  - Cloud Engineer
+- resource: '#ListImages'
+  workflows:
+  - Container Registry Management
+  personas:
+  - Cloud Engineer
+- resource: '#PutImage'
+  workflows:
+  - Container Registry Management
+  personas:
+  - Cloud Engineer
+- resource: '#BatchGetImage'
+  workflows:
+  - Container Registry Management
+  personas:
+  - Cloud Engineer
+- resource: '#DeleteRepository'
+  workflows:
+  - Container Registry Management
+  personas:
+  - Cloud Engineer

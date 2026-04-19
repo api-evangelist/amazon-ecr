@@ -1,0 +1,139 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Amazon ECR"
+  description: "Amazon ECR fully managed container registry."
+  tags:
+    - Amazon ECR
+    - AWS
+    - Containers
+    - Container Registry
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+
+capability:
+  consumes:
+    - type: http
+      namespace: ecr
+      baseUri: https://api.ecr.us-east-1.amazonaws.com
+      description: "Amazon ECR fully managed container registry."
+      authentication:
+        type: apikey
+        key: Authorization
+        value: "AWS4-HMAC-SHA256 Credential={{env.AWS_ACCESS_KEY_ID}}"
+        placement: header
+      resources:
+        - name: root
+          path: /
+          description: "Operations for root resources."
+          operations:
+            - name: createRepository
+              method: POST
+              description: "Amazon ECR Create Repository"
+              inputParameters:
+                - name: X-Amz-Target
+                  in: header
+                  type: string
+                  required: true
+                  description: "The X-Amz-Target parameter"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: #DescribeRepositories
+          path: /#DescribeRepositories
+          description: "Operations for #DescribeRepositories resources."
+          operations:
+            - name: describeRepositories
+              method: POST
+              description: "Amazon ECR Describe Repositories"
+              inputParameters:
+                - name: X-Amz-Target
+                  in: header
+                  type: string
+                  required: true
+                  description: "The X-Amz-Target parameter"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: #DeleteRepository
+          path: /#DeleteRepository
+          description: "Operations for #DeleteRepository resources."
+          operations:
+            - name: deleteRepository
+              method: POST
+              description: "Amazon ECR Delete Repository"
+              inputParameters:
+                - name: X-Amz-Target
+                  in: header
+                  type: string
+                  required: true
+                  description: "The X-Amz-Target parameter"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: #PutImage
+          path: /#PutImage
+          description: "Operations for #PutImage resources."
+          operations:
+            - name: putImage
+              method: POST
+              description: "Amazon ECR Put Image"
+              inputParameters:
+                - name: X-Amz-Target
+                  in: header
+                  type: string
+                  required: true
+                  description: "The X-Amz-Target parameter"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: #BatchGetImage
+          path: /#BatchGetImage
+          description: "Operations for #BatchGetImage resources."
+          operations:
+            - name: batchGetImage
+              method: POST
+              description: "Amazon ECR Batch Get Image"
+              inputParameters:
+                - name: X-Amz-Target
+                  in: header
+                  type: string
+                  required: true
+                  description: "The X-Amz-Target parameter"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: #ListImages
+          path: /#ListImages
+          description: "Operations for #ListImages resources."
+          operations:
+            - name: listImages
+              method: POST
+              description: "Amazon ECR List Images"
+              inputParameters:
+                - name: X-Amz-Target
+                  in: header
+                  type: string
+                  required: true
+                  description: "The X-Amz-Target parameter"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."

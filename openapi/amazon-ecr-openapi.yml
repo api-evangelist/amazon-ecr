@@ -11,8 +11,8 @@ info:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
 servers:
-  - url: https://api.ecr.amazonaws.com
-    description: Amazon ECR API endpoint
+- url: https://api.ecr.amazonaws.com
+  description: Amazon ECR API endpoint
 paths:
   /:
     post:
@@ -26,7 +26,7 @@ paths:
             schema:
               type: object
               required:
-                - repositoryName
+              - repositoryName
               properties:
                 repositoryName:
                   type: string
@@ -44,8 +44,8 @@ paths:
                 imageTagMutability:
                   type: string
                   enum:
-                    - MUTABLE
-                    - IMMUTABLE
+                  - MUTABLE
+                  - IMMUTABLE
                   description: The tag mutability setting for the repository.
                 imageScanningConfiguration:
                   type: object
@@ -59,19 +59,25 @@ paths:
                     encryptionType:
                       type: string
                       enum:
-                        - AES256
-                        - KMS
+                      - AES256
+                      - KMS
                     kmsKey:
                       type: string
                   description: The encryption configuration for the repository.
+            examples:
+              createRepositoryRequestExample:
+                summary: Default createRepository request
+                x-microcks-default: true
+                value: {}
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AmazonEC2ContainerRegistry_V20150921.CreateRepository
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AmazonEC2ContainerRegistry_V20150921.CreateRepository
+        example: AmazonEC2ContainerRegistry_V20150921.CreateRepository
       responses:
         '200':
           description: Successful response with the created repository details.
@@ -79,8 +85,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateRepositoryResponse'
+              examples:
+                createRepository200Example:
+                  summary: Default createRepository 200 response
+                  x-microcks-default: true
+                  value:
+                    repository: example-string
         '400':
           description: Bad request error.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#DescribeRepositories:
     post:
       operationId: describeRepositories
@@ -107,14 +122,20 @@ paths:
                 maxResults:
                   type: integer
                   description: The maximum number of repository results.
+            examples:
+              describeRepositoriesRequestExample:
+                summary: Default describeRepositories request
+                x-microcks-default: true
+                value: {}
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AmazonEC2ContainerRegistry_V20150921.DescribeRepositories
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AmazonEC2ContainerRegistry_V20150921.DescribeRepositories
+        example: AmazonEC2ContainerRegistry_V20150921.DescribeRepositories
       responses:
         '200':
           description: Successful response with repository details.
@@ -122,8 +143,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeRepositoriesResponse'
+              examples:
+                describeRepositories200Example:
+                  summary: Default describeRepositories 200 response
+                  x-microcks-default: true
+                  value:
+                    repositories:
+                    - example-string
+                    nextToken: example-string
       tags:
-        - '#DescribeRepositories'
+      - '#DescribeRepositories'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#DeleteRepository:
     post:
       operationId: deleteRepository
@@ -136,7 +168,7 @@ paths:
             schema:
               type: object
               required:
-                - repositoryName
+              - repositoryName
               properties:
                 registryId:
                   type: string
@@ -147,21 +179,30 @@ paths:
                 force:
                   type: boolean
                   description: If true, deleting the repository will force deletion of all contained images.
+            examples:
+              deleteRepositoryRequestExample:
+                summary: Default deleteRepository request
+                x-microcks-default: true
+                value: {}
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AmazonEC2ContainerRegistry_V20150921.DeleteRepository
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AmazonEC2ContainerRegistry_V20150921.DeleteRepository
+        example: AmazonEC2ContainerRegistry_V20150921.DeleteRepository
       responses:
         '200':
           description: Successful response with the deleted repository details.
         '400':
           description: Bad request error.
       tags:
-        - '#DeleteRepository'
+      - '#DeleteRepository'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#PutImage:
     post:
       operationId: putImage
@@ -174,8 +215,8 @@ paths:
             schema:
               type: object
               required:
-                - repositoryName
-                - imageManifest
+              - repositoryName
+              - imageManifest
               properties:
                 registryId:
                   type: string
@@ -195,21 +236,30 @@ paths:
                 imageDigest:
                   type: string
                   description: The image digest of the image manifest.
+            examples:
+              putImageRequestExample:
+                summary: Default putImage request
+                x-microcks-default: true
+                value: {}
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AmazonEC2ContainerRegistry_V20150921.PutImage
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AmazonEC2ContainerRegistry_V20150921.PutImage
+        example: AmazonEC2ContainerRegistry_V20150921.PutImage
       responses:
         '200':
           description: Successful response with the image details.
         '400':
           description: Bad request error.
       tags:
-        - '#PutImage'
+      - '#PutImage'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#BatchGetImage:
     post:
       operationId: batchGetImage
@@ -222,8 +272,8 @@ paths:
             schema:
               type: object
               required:
-                - repositoryName
-                - imageIds
+              - repositoryName
+              - imageIds
               properties:
                 registryId:
                   type: string
@@ -246,21 +296,30 @@ paths:
                   items:
                     type: string
                   description: The accepted media types for the request.
+            examples:
+              batchGetImageRequestExample:
+                summary: Default batchGetImage request
+                x-microcks-default: true
+                value: {}
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AmazonEC2ContainerRegistry_V20150921.BatchGetImage
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AmazonEC2ContainerRegistry_V20150921.BatchGetImage
+        example: AmazonEC2ContainerRegistry_V20150921.BatchGetImage
       responses:
         '200':
           description: Successful response with the image details.
         '400':
           description: Bad request error.
       tags:
-        - '#BatchGetImage'
+      - '#BatchGetImage'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#ListImages:
     post:
       operationId: listImages
@@ -273,7 +332,7 @@ paths:
             schema:
               type: object
               required:
-                - repositoryName
+              - repositoryName
               properties:
                 registryId:
                   type: string
@@ -293,25 +352,34 @@ paths:
                     tagStatus:
                       type: string
                       enum:
-                        - TAGGED
-                        - UNTAGGED
-                        - ANY
+                      - TAGGED
+                      - UNTAGGED
+                      - ANY
                   description: The filter key and value to filter on.
+            examples:
+              listImagesRequestExample:
+                summary: Default listImages request
+                x-microcks-default: true
+                value: {}
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AmazonEC2ContainerRegistry_V20150921.ListImages
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AmazonEC2ContainerRegistry_V20150921.ListImages
+        example: AmazonEC2ContainerRegistry_V20150921.ListImages
       responses:
         '200':
           description: Successful response with image IDs.
         '400':
           description: Bad request error.
       tags:
-        - '#ListImages'
+      - '#ListImages'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   schemas:
     CreateRepositoryResponse:
@@ -326,39 +394,50 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Repository'
+          example:
+          - example-string
         nextToken:
           type: string
+          example: example-string
     Repository:
       type: object
       properties:
         repositoryArn:
           type: string
           description: The Amazon Resource Name (ARN) of the repository.
+          example: arn:aws:service:us-east-1:123456789012:resource/example
         registryId:
           type: string
           description: The AWS account ID associated with the registry.
+          example: example-id-1234
         repositoryName:
           type: string
           description: The name of the repository.
+          example: example-resource-name
         repositoryUri:
           type: string
           description: The URI for the repository.
+          example: example-string
         createdAt:
           type: string
           format: date-time
           description: The date and time the repository was created.
+          example: '2025-03-15T14:30:00Z'
         imageTagMutability:
           type: string
           enum:
-            - MUTABLE
-            - IMMUTABLE
+          - MUTABLE
+          - IMMUTABLE
           description: The tag mutability setting for the repository.
+          example: MUTABLE
         imageScanningConfiguration:
           type: object
           properties:
             scanOnPush:
               type: boolean
           description: The image scanning configuration for the repository.
+          example:
+            scanOnPush: true
         encryptionConfiguration:
           type: object
           properties:
@@ -367,6 +446,9 @@ components:
             kmsKey:
               type: string
           description: The encryption configuration for the repository.
+          example:
+            encryptionType: standard
+            kmsKey: example-string
   securitySchemes:
     aws_sigv4:
       type: apiKey
@@ -374,8 +456,8 @@ components:
       in: header
       description: AWS Signature Version 4 authentication.
 tags:
-  - name: '#BatchGetImage'
-  - name: '#DeleteRepository'
-  - name: '#DescribeRepositories'
-  - name: '#ListImages'
-  - name: '#PutImage'
+- name: '#BatchGetImage'
+- name: '#DeleteRepository'
+- name: '#DescribeRepositories'
+- name: '#ListImages'
+- name: '#PutImage'

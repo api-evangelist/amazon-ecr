@@ -1,0 +1,157 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Amazon ECR Container Registry Management"
+  description: "Unified capability for managing ECR repositories, container images, and lifecycle policies for DevOps engineers."
+  tags:
+    - Amazon ECR
+    - AWS
+    - Containers
+    - Container Registry
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+
+capability:
+  consumes:
+    - import: ecr
+      location: ./shared/ecr.yaml
+
+  exposes:
+    - type: rest
+      port: 8084
+      namespace: ecr-api
+      description: "Unified REST API for Container Registry Management."
+      resources:
+        - path: /v1/resource
+          name: createRepository
+          description: "Amazon ECR Create Repository"
+          operations:
+            - method: POST
+              name: createRepository
+              description: "Amazon ECR Create Repository"
+              call: "ecr.createRepository"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/#DescribeRepositories
+          name: describeRepositories
+          description: "Amazon ECR Describe Repositories"
+          operations:
+            - method: POST
+              name: describeRepositories
+              description: "Amazon ECR Describe Repositories"
+              call: "ecr.describeRepositories"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/#DeleteRepository
+          name: deleteRepository
+          description: "Amazon ECR Delete Repository"
+          operations:
+            - method: POST
+              name: deleteRepository
+              description: "Amazon ECR Delete Repository"
+              call: "ecr.deleteRepository"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/#PutImage
+          name: putImage
+          description: "Amazon ECR Put Image"
+          operations:
+            - method: POST
+              name: putImage
+              description: "Amazon ECR Put Image"
+              call: "ecr.putImage"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/#BatchGetImage
+          name: batchGetImage
+          description: "Amazon ECR Batch Get Image"
+          operations:
+            - method: POST
+              name: batchGetImage
+              description: "Amazon ECR Batch Get Image"
+              call: "ecr.batchGetImage"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/#ListImages
+          name: listImages
+          description: "Amazon ECR List Images"
+          operations:
+            - method: POST
+              name: listImages
+              description: "Amazon ECR List Images"
+              call: "ecr.listImages"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9094
+      namespace: ecr-mcp
+      transport: http
+      description: "MCP server for AI-assisted Container Registry Management."
+      tools:
+        - name: create-repository
+          description: "Amazon ECR Create Repository"
+          hints:
+            readOnly: false
+            destructive: false
+          call: "ecr.createRepository"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: describe-repositories
+          description: "Amazon ECR Describe Repositories"
+          hints:
+            readOnly: false
+            destructive: false
+          call: "ecr.describeRepositories"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: delete-repository
+          description: "Amazon ECR Delete Repository"
+          hints:
+            readOnly: false
+            destructive: false
+          call: "ecr.deleteRepository"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: put-image
+          description: "Amazon ECR Put Image"
+          hints:
+            readOnly: false
+            destructive: false
+          call: "ecr.putImage"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: batch-get-image
+          description: "Amazon ECR Batch Get Image"
+          hints:
+            readOnly: false
+            destructive: false
+          call: "ecr.batchGetImage"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-images
+          description: "Amazon ECR List Images"
+          hints:
+            readOnly: false
+            destructive: false
+          call: "ecr.listImages"
+          outputParameters:
+            - type: object
+              mapping: "$."

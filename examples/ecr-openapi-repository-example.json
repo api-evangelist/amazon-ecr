@@ -1,0 +1,5 @@
+{
+  "repositoryArn": "arn:aws:service:us-east-1:123456789012:resource/example",
+  "registryId": "example-id-4474",
+  "repositoryName": "example-resource-name"
+}

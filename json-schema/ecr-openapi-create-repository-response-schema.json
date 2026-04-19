@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-ecr/refs/heads/main/json-schema/ecr-openapi-create-repository-response-schema.json",
+  "title": "CreateRepositoryResponse",
+  "description": "CreateRepositoryResponse schema from Amazon ECR Amazon Elastic Container Registry (ECR) API",
+  "type": "object",
+  "properties": {
+    "repository": {
+      "$ref": "#/components/schemas/Repository"
+    }
+  }
+}

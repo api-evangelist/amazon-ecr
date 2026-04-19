@@ -1,0 +1,6 @@
+{
+  "repositories": [
+    "example"
+  ],
+  "nextToken": "example-string-value"
+}

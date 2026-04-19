@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-ecr/refs/heads/main/json-structure/ecr-openapi-describe-repositories-response-structure.json",
+  "name": "DescribeRepositoriesResponse",
+  "description": "DescribeRepositoriesResponse schema from Amazon ECR Amazon Elastic Container Registry (ECR) API",
+  "type": "object",
+  "properties": {
+    "repositories": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Repository"
+      }
+    },
+    "nextToken": {
+      "type": "string"
+    }
+  }
+}
