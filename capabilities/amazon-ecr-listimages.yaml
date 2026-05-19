@@ -1,0 +1,89 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: 'Amazon ECR Amazon Elastic Container Registry (ECR) API — #ListImages'
+  description: 'Amazon ECR Amazon Elastic Container Registry (ECR) API — #ListImages. 1 operations. Lead operation: Amazon
+    ECR List Images. Self-contained Naftiko capability covering one Amazon Ecr business surface.'
+  tags:
+  - Amazon Ecr
+  - '#ListImages'
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_ECR_API_KEY: AMAZON_ECR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-ecr-listimages
+    baseUri: https://api.ecr.amazonaws.com
+    description: 'Amazon ECR Amazon Elastic Container Registry (ECR) API — #ListImages business capability. Self-contained,
+      no shared references.'
+    resources:
+    - name: '#ListImages'
+      path: /#ListImages
+      operations:
+      - name: listimages
+        method: POST
+        description: Amazon ECR List Images
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AMAZON_ECR_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amazon-ecr-listimages-rest
+    port: 8080
+    description: 'REST adapter for Amazon ECR Amazon Elastic Container Registry (ECR) API — #ListImages. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.'
+    resources:
+    - path: /v1/listimages
+      name: listimages
+      description: 'REST surface for #ListImages.'
+      operations:
+      - method: POST
+        name: listimages
+        description: Amazon ECR List Images
+        call: amazon-ecr-listimages.listimages
+        with:
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-ecr-listimages-mcp
+    port: 9090
+    transport: http
+    description: 'MCP adapter for Amazon ECR Amazon Elastic Container Registry (ECR) API — #ListImages. One tool per consumed
+      operation, routed inline through this capability''s consumes block.'
+    tools:
+    - name: amazon-ecr-list-images
+      description: Amazon ECR List Images
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-ecr-listimages.listimages
+      with:
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

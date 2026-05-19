@@ -1,0 +1,89 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: 'Amazon ECR Amazon Elastic Container Registry (ECR) API — #PutImage'
+  description: 'Amazon ECR Amazon Elastic Container Registry (ECR) API — #PutImage. 1 operations. Lead operation: Amazon ECR
+    Put Image. Self-contained Naftiko capability covering one Amazon Ecr business surface.'
+  tags:
+  - Amazon Ecr
+  - '#PutImage'
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_ECR_API_KEY: AMAZON_ECR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-ecr-putimage
+    baseUri: https://api.ecr.amazonaws.com
+    description: 'Amazon ECR Amazon Elastic Container Registry (ECR) API — #PutImage business capability. Self-contained,
+      no shared references.'
+    resources:
+    - name: '#PutImage'
+      path: /#PutImage
+      operations:
+      - name: putimage
+        method: POST
+        description: Amazon ECR Put Image
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AMAZON_ECR_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amazon-ecr-putimage-rest
+    port: 8080
+    description: 'REST adapter for Amazon ECR Amazon Elastic Container Registry (ECR) API — #PutImage. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.'
+    resources:
+    - path: /v1/putimage
+      name: putimage
+      description: 'REST surface for #PutImage.'
+      operations:
+      - method: POST
+        name: putimage
+        description: Amazon ECR Put Image
+        call: amazon-ecr-putimage.putimage
+        with:
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-ecr-putimage-mcp
+    port: 9090
+    transport: http
+    description: 'MCP adapter for Amazon ECR Amazon Elastic Container Registry (ECR) API — #PutImage. One tool per consumed
+      operation, routed inline through this capability''s consumes block.'
+    tools:
+    - name: amazon-ecr-put-image
+      description: Amazon ECR Put Image
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-ecr-putimage.putimage
+      with:
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

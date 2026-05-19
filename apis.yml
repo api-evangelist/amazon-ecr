@@ -1,11 +1,12 @@
 name: Amazon ECR
-description: Amazon Elastic Container Registry (ECR) is a fully managed container registry that makes it easy to store, manage, share, and deploy container images and artifacts. ECR eliminates the 
-  need to operate your own container repositories or worry about scaling the underlying infrastructure, and integrates with Amazon ECS and Amazon EKS for simplified development to production 
-  workflows.
+description: Amazon Elastic Container Registry (ECR) is a fully managed container registry that makes it easy to store, manage,
+  share, and deploy container images and artifacts. ECR eliminates the need to operate your own container repositories or
+  worry about scaling the underlying infrastructure, and integrates with Amazon ECS and Amazon EKS for simplified development
+  to production workflows.
 image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
 url: https://aws.amazon.com/ecr/
 created: '2024-01-15'
-modified: '2026-04-19'
+modified: '2026-05-19'
 tags:
 - Amazon Web Services
 - AWS
@@ -50,6 +51,18 @@ apis:
     url: json-structure/amazon-ecr-repository-structure.json
   - type: Example
     url: examples/amazon-ecr-repository-example.json
+  - type: NaftikoCapability
+    url: capabilities/amazon-ecr-batchgetimage.yaml
+  - type: NaftikoCapability
+    url: capabilities/amazon-ecr-deleterepository.yaml
+  - type: NaftikoCapability
+    url: capabilities/amazon-ecr-describerepositories.yaml
+  - type: NaftikoCapability
+    url: capabilities/amazon-ecr-listimages.yaml
+  - type: NaftikoCapability
+    url: capabilities/amazon-ecr-putimage.yaml
+  - type: NaftikoCapability
+    url: capabilities/amazon-ecr-general.yaml
 common:
 - type: Portal
   url: https://aws.amazon.com/
@@ -131,20 +144,18 @@ common:
   url: rules/amazon-ecr-spectral-rules.yml
 - type: Vocabulary
   url: vocabulary/amazon-ecr-vocabulary.yaml
-- type: NaftikoCapability
-  url: capabilities/ecr-management.yaml
 - type: Integrations
   url: https://aws.amazon.com/marketplace
 maintainer:
   name: Kin Lane
   email: kin@apievangelist.com
 integrations:
-  - name: Sign in
-  - name: Agent Mode
-  - name: 'Why AWS Marketplace?'
-  - name: Get started in AWS Marketplace
-  - name: Industry
-  - name: Resources
-  - name: Become a Channel Partner
-  - name: Sell in AWS Marketplace
-  - name: Manage Your Account
+- name: Sign in
+- name: Agent Mode
+- name: Why AWS Marketplace?
+- name: Get started in AWS Marketplace
+- name: Industry
+- name: Resources
+- name: Become a Channel Partner
+- name: Sell in AWS Marketplace
+- name: Manage Your Account
