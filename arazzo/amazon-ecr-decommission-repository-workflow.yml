@@ -1,0 +1,116 @@
+arazzo: 1.0.1
+info:
+  title: Amazon ECR Decommission Repository
+  summary: Inventory a repository's images, then delete it with a force branch when images remain.
+  description: >-
+    Safely decommissions an Amazon ECR repository. The flow lists the image IDs
+    the repository contains and branches on whether any images remain: when the
+    repository is empty it is deleted directly, and when images are still present
+    it is deleted with the force option so contained images are removed first.
+    Because the spec does not expose a batch image delete operation, image
+    removal is delegated to the force flag on DeleteRepository — this is the
+    adapted behaviour. Every step spells out its AWS JSON request inline,
+    including the documented X-Amz-Target header, so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: amazonEcrApi
+  url: ../openapi/amazon-ecr-openapi.yml
+  type: openapi
+workflows:
+- workflowId: decommission-repository
+  summary: List a repository's images then delete it, forcing deletion when images remain.
+  description: >-
+    Lists the repository's image IDs and branches: an empty repository is
+    deleted directly, while a non-empty repository is deleted with the force
+    flag so its images are removed as part of deletion.
+  inputs:
+    type: object
+    required:
+    - repositoryName
+    properties:
+      repositoryName:
+        type: string
+        description: The name of the repository to decommission.
+      registryId:
+        type: string
+        description: The AWS account ID associated with the registry.
+  steps:
+  - stepId: listImages
+    description: >-
+      List the image IDs the repository contains to decide whether deletion must
+      be forced.
+    operationId: listImages
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AmazonEC2ContainerRegistry_V20150921.ListImages
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        registryId: $inputs.registryId
+        repositoryName: $inputs.repositoryName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      imageIds: $response.body#/imageIds
+    onSuccess:
+    - name: hasImages
+      type: goto
+      stepId: forceDeleteRepository
+      criteria:
+      - context: $response.body
+        condition: $.imageIds.length > 0
+        type: jsonpath
+    - name: isEmpty
+      type: goto
+      stepId: deleteEmptyRepository
+      criteria:
+      - context: $response.body
+        condition: $.imageIds.length == 0
+        type: jsonpath
+  - stepId: forceDeleteRepository
+    description: >-
+      Delete the repository with the force option so its contained images are
+      removed as part of the deletion.
+    operationId: deleteRepository
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AmazonEC2ContainerRegistry_V20150921.DeleteRepository
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        registryId: $inputs.registryId
+        repositoryName: $inputs.repositoryName
+        force: true
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      repository: $response.body#/repository
+    onSuccess:
+    - name: done
+      type: end
+  - stepId: deleteEmptyRepository
+    description: >-
+      Delete the repository directly when it holds no images, leaving the force
+      flag off.
+    operationId: deleteRepository
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AmazonEC2ContainerRegistry_V20150921.DeleteRepository
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        registryId: $inputs.registryId
+        repositoryName: $inputs.repositoryName
+        force: false
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      repository: $response.body#/repository
+  outputs:
+    imageIds: $steps.listImages.outputs.imageIds
+    forcedRepository: $steps.forceDeleteRepository.outputs.repository
+    deletedRepository: $steps.deleteEmptyRepository.outputs.repository

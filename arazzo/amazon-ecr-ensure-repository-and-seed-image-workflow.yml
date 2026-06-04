@@ -1,0 +1,137 @@
+arazzo: 1.0.1
+info:
+  title: Amazon ECR Ensure Repository and Seed Image
+  summary: Describe a repository, create it only when missing, then seed it with an image manifest.
+  description: >-
+    Ensures an Amazon ECR repository exists before seeding it with a container
+    image. The flow describes the registry for the repository and branches: when
+    the repository is missing it is created, and when it already exists creation
+    is skipped. Either path converges on putting an image manifest into the
+    repository and reading it back through BatchGetImage to confirm the seed.
+    Every step spells out its AWS JSON request inline, including the documented
+    X-Amz-Target header, so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: amazonEcrApi
+  url: ../openapi/amazon-ecr-openapi.yml
+  type: openapi
+workflows:
+- workflowId: ensure-repository-and-seed-image
+  summary: Create a repository only if absent, then put and verify a seed image.
+  description: >-
+    Describes the repository and creates it only when it is missing, then puts a
+    seed image manifest and confirms it through BatchGetImage.
+  inputs:
+    type: object
+    required:
+    - repositoryName
+    - imageManifest
+    - imageTag
+    properties:
+      repositoryName:
+        type: string
+        description: The repository to ensure and seed.
+      imageManifest:
+        type: string
+        description: The image manifest corresponding to the seed image.
+      imageManifestMediaType:
+        type: string
+        description: The media type of the image manifest.
+      imageTag:
+        type: string
+        description: The tag to associate with the seed image.
+  steps:
+  - stepId: lookupRepository
+    description: >-
+      Describe the registry for the target repository to decide whether it must
+      be created.
+    operationId: describeRepositories
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AmazonEC2ContainerRegistry_V20150921.DescribeRepositories
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        repositoryNames:
+        - $inputs.repositoryName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      repositories: $response.body#/repositories
+    onSuccess:
+    - name: exists
+      type: goto
+      stepId: seedImage
+      criteria:
+      - context: $response.body
+        condition: $.repositories.length > 0
+        type: jsonpath
+    - name: missing
+      type: goto
+      stepId: createRepository
+      criteria:
+      - context: $response.body
+        condition: $.repositories.length == 0
+        type: jsonpath
+  - stepId: createRepository
+    description: >-
+      Create the repository when the lookup found no existing repository.
+    operationId: createRepository
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AmazonEC2ContainerRegistry_V20150921.CreateRepository
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        repositoryName: $inputs.repositoryName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      repository: $response.body#/repository
+  - stepId: seedImage
+    description: >-
+      Put the seed image manifest and tag into the ensured repository.
+    operationId: putImage
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AmazonEC2ContainerRegistry_V20150921.PutImage
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        repositoryName: $inputs.repositoryName
+        imageManifest: $inputs.imageManifest
+        imageManifestMediaType: $inputs.imageManifestMediaType
+        imageTag: $inputs.imageTag
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      image: $response.body#/image
+  - stepId: verifySeed
+    description: >-
+      Read the seeded image back through BatchGetImage to confirm the manifest
+      was stored under the supplied tag.
+    operationId: batchGetImage
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AmazonEC2ContainerRegistry_V20150921.BatchGetImage
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        repositoryName: $inputs.repositoryName
+        imageIds:
+        - imageTag: $inputs.imageTag
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      images: $response.body#/images
+      failures: $response.body#/failures
+  outputs:
+    repositories: $steps.lookupRepository.outputs.repositories
+    createdRepository: $steps.createRepository.outputs.repository
+    image: $steps.seedImage.outputs.image
+    images: $steps.verifySeed.outputs.images

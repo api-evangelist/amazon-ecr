@@ -64,6 +64,27 @@ apis:
   - type: NaftikoCapability
     url: capabilities/amazon-ecr-general.yaml
 common:
+- type: ArazzoWorkflows
+  url: arazzo/
+  workflows:
+  - url: arazzo/amazon-ecr-decommission-repository-workflow.yml
+    name: Amazon ECR Decommission Repository
+    summary: Inventory a repository's images, then delete it with a force branch when images remain.
+  - url: arazzo/amazon-ecr-ensure-repository-and-seed-image-workflow.yml
+    name: Amazon ECR Ensure Repository and Seed Image
+    summary: Describe a repository, create it only when missing, then seed it with an image manifest.
+  - url: arazzo/amazon-ecr-image-inventory-workflow.yml
+    name: Amazon ECR Image Inventory
+    summary: Describe a repository, list its image IDs with pagination, and fetch image detail.
+  - url: arazzo/amazon-ecr-provision-repository-workflow.yml
+    name: Amazon ECR Provision Repository
+    summary: Create a container repository, confirm it exists, and inspect its current images.
+  - url: arazzo/amazon-ecr-publish-image-workflow.yml
+    name: Amazon ECR Publish Image
+    summary: Confirm a repository exists, put an image manifest, then read the image back.
+  - url: arazzo/amazon-ecr-registry-audit-workflow.yml
+    name: Amazon ECR Registry Audit
+    summary: Page through every repository in a registry following the DescribeRepositories token loop.
 - type: Portal
   url: https://aws.amazon.com/
 - type: DeveloperPortal

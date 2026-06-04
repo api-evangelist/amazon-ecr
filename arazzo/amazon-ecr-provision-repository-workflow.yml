@@ -1,0 +1,101 @@
+arazzo: 1.0.1
+info:
+  title: Amazon ECR Provision Repository
+  summary: Create a container repository, confirm it exists, and inspect its current images.
+  description: >-
+    Provisions a new Amazon ECR container repository and then verifies it by
+    describing the registry and listing the images it currently holds. The flow
+    creates the repository with the supplied tag mutability and scan-on-push
+    configuration, reads the repository back through DescribeRepositories to
+    confirm it is registered, and finally lists any image IDs already present.
+    Every step spells out its AWS JSON request inline, including the documented
+    X-Amz-Target header, so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: amazonEcrApi
+  url: ../openapi/amazon-ecr-openapi.yml
+  type: openapi
+workflows:
+- workflowId: provision-repository
+  summary: Create an ECR repository and verify it by describing and listing its images.
+  description: >-
+    Creates a repository in the registry, reads it back through
+    DescribeRepositories to confirm registration, and lists the image IDs the
+    repository currently contains.
+  inputs:
+    type: object
+    required:
+    - repositoryName
+    properties:
+      repositoryName:
+        type: string
+        description: The name to use for the new repository.
+      imageTagMutability:
+        type: string
+        enum:
+        - MUTABLE
+        - IMMUTABLE
+        description: The tag mutability setting for the repository.
+      scanOnPush:
+        type: boolean
+        description: Whether images should be scanned automatically when pushed.
+  steps:
+  - stepId: createRepository
+    description: >-
+      Create the repository in the registry with the requested tag mutability
+      and image scanning configuration.
+    operationId: createRepository
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AmazonEC2ContainerRegistry_V20150921.CreateRepository
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        repositoryName: $inputs.repositoryName
+        imageTagMutability: $inputs.imageTagMutability
+        imageScanningConfiguration:
+          scanOnPush: $inputs.scanOnPush
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      repository: $response.body#/repository
+  - stepId: confirmRepository
+    description: >-
+      Read the repository back through DescribeRepositories to confirm it is
+      registered before listing its images.
+    operationId: describeRepositories
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AmazonEC2ContainerRegistry_V20150921.DescribeRepositories
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        repositoryNames:
+        - $inputs.repositoryName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      repositories: $response.body#/repositories
+  - stepId: listRepositoryImages
+    description: >-
+      List the image IDs the newly created repository currently contains.
+    operationId: listImages
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AmazonEC2ContainerRegistry_V20150921.ListImages
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        repositoryName: $inputs.repositoryName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      imageIds: $response.body#/imageIds
+  outputs:
+    repository: $steps.createRepository.outputs.repository
+    repositories: $steps.confirmRepository.outputs.repositories
+    imageIds: $steps.listRepositoryImages.outputs.imageIds

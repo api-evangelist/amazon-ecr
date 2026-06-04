@@ -1,0 +1,105 @@
+arazzo: 1.0.1
+info:
+  title: Amazon ECR Publish Image
+  summary: Confirm a repository exists, put an image manifest, then read the image back.
+  description: >-
+    Publishes a container image manifest into an existing Amazon ECR repository
+    and verifies the result. The flow first describes the target repository to
+    confirm it is registered, then puts the image manifest with its media type
+    and tag, and finally reads the image back through BatchGetImage to confirm
+    the manifest and tag were stored. Every step spells out its AWS JSON request
+    inline, including the documented X-Amz-Target header, so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: amazonEcrApi
+  url: ../openapi/amazon-ecr-openapi.yml
+  type: openapi
+workflows:
+- workflowId: publish-image
+  summary: Put an image manifest into a repository and verify it with BatchGetImage.
+  description: >-
+    Confirms the target repository exists, pushes an image manifest with its
+    media type and tag, and reads the image back to confirm it was stored.
+  inputs:
+    type: object
+    required:
+    - repositoryName
+    - imageManifest
+    - imageTag
+    properties:
+      repositoryName:
+        type: string
+        description: The repository in which to put the image.
+      imageManifest:
+        type: string
+        description: The image manifest corresponding to the image to upload.
+      imageManifestMediaType:
+        type: string
+        description: The media type of the image manifest.
+      imageTag:
+        type: string
+        description: The tag to associate with the image.
+  steps:
+  - stepId: confirmRepository
+    description: >-
+      Describe the target repository to confirm it is registered before
+      attempting to put an image into it.
+    operationId: describeRepositories
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AmazonEC2ContainerRegistry_V20150921.DescribeRepositories
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        repositoryNames:
+        - $inputs.repositoryName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      repositories: $response.body#/repositories
+  - stepId: putImage
+    description: >-
+      Create or update the image manifest and tag associated with the image in
+      the confirmed repository.
+    operationId: putImage
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AmazonEC2ContainerRegistry_V20150921.PutImage
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        repositoryName: $inputs.repositoryName
+        imageManifest: $inputs.imageManifest
+        imageManifestMediaType: $inputs.imageManifestMediaType
+        imageTag: $inputs.imageTag
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      image: $response.body#/image
+  - stepId: verifyImage
+    description: >-
+      Read the image back through BatchGetImage using the published tag to
+      confirm the manifest was stored.
+    operationId: batchGetImage
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AmazonEC2ContainerRegistry_V20150921.BatchGetImage
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        repositoryName: $inputs.repositoryName
+        imageIds:
+        - imageTag: $inputs.imageTag
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      images: $response.body#/images
+      failures: $response.body#/failures
+  outputs:
+    repositories: $steps.confirmRepository.outputs.repositories
+    image: $steps.putImage.outputs.image
+    images: $steps.verifyImage.outputs.images

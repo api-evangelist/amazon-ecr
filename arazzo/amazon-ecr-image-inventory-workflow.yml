@@ -1,0 +1,157 @@
+arazzo: 1.0.1
+info:
+  title: Amazon ECR Image Inventory
+  summary: Describe a repository, list its image IDs with pagination, and fetch image detail.
+  description: >-
+    Builds a detailed image inventory for a single Amazon ECR repository. The
+    flow describes the repository to confirm it exists, lists its image IDs and
+    follows the nextToken pagination loop until every page has been read, and
+    then fetches detailed manifests for the discovered images through
+    BatchGetImage. The pagination loop branches on the presence of a nextToken to
+    decide whether to request another page. Every step spells out its AWS JSON
+    request inline, including the documented X-Amz-Target header, so the flow can
+    be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: amazonEcrApi
+  url: ../openapi/amazon-ecr-openapi.yml
+  type: openapi
+workflows:
+- workflowId: image-inventory
+  summary: Paginate a repository's image IDs and resolve their detailed manifests.
+  description: >-
+    Confirms the repository exists, walks the ListImages pagination loop to
+    gather image IDs, and resolves detailed manifests through BatchGetImage.
+  inputs:
+    type: object
+    required:
+    - repositoryName
+    properties:
+      repositoryName:
+        type: string
+        description: The repository whose images should be inventoried.
+      tagStatus:
+        type: string
+        enum:
+        - TAGGED
+        - UNTAGGED
+        - ANY
+        description: Optional filter limiting the listed images by tag status.
+      maxResults:
+        type: integer
+        description: The maximum number of image results to return per page.
+  steps:
+  - stepId: confirmRepository
+    description: >-
+      Describe the repository to confirm it is registered before listing its
+      images.
+    operationId: describeRepositories
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AmazonEC2ContainerRegistry_V20150921.DescribeRepositories
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        repositoryNames:
+        - $inputs.repositoryName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      repositories: $response.body#/repositories
+  - stepId: listImages
+    description: >-
+      List the image IDs for the repository, applying the optional tag-status
+      filter and page size.
+    operationId: listImages
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AmazonEC2ContainerRegistry_V20150921.ListImages
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        repositoryName: $inputs.repositoryName
+        maxResults: $inputs.maxResults
+        filter:
+          tagStatus: $inputs.tagStatus
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      imageIds: $response.body#/imageIds
+      nextToken: $response.body#/nextToken
+    onSuccess:
+    - name: morePages
+      type: goto
+      stepId: listMoreImages
+      criteria:
+      - context: $response.body
+        condition: $.nextToken != null
+        type: jsonpath
+    - name: noMorePages
+      type: goto
+      stepId: resolveImages
+      criteria:
+      - context: $response.body
+        condition: $.nextToken == null
+        type: jsonpath
+  - stepId: listMoreImages
+    description: >-
+      Request the next page of image IDs using the pagination token returned by
+      the previous ListImages call, looping until no token remains.
+    operationId: listImages
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AmazonEC2ContainerRegistry_V20150921.ListImages
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        repositoryName: $inputs.repositoryName
+        maxResults: $inputs.maxResults
+        nextToken: $steps.listImages.outputs.nextToken
+        filter:
+          tagStatus: $inputs.tagStatus
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      imageIds: $response.body#/imageIds
+      nextToken: $response.body#/nextToken
+    onSuccess:
+    - name: stillMorePages
+      type: goto
+      stepId: listMoreImages
+      criteria:
+      - context: $response.body
+        condition: $.nextToken != null
+        type: jsonpath
+    - name: pagesComplete
+      type: goto
+      stepId: resolveImages
+      criteria:
+      - context: $response.body
+        condition: $.nextToken == null
+        type: jsonpath
+  - stepId: resolveImages
+    description: >-
+      Resolve detailed manifests for the discovered image IDs through
+      BatchGetImage.
+    operationId: batchGetImage
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AmazonEC2ContainerRegistry_V20150921.BatchGetImage
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        repositoryName: $inputs.repositoryName
+        imageIds: $steps.listImages.outputs.imageIds
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      images: $response.body#/images
+      failures: $response.body#/failures
+  outputs:
+    repositories: $steps.confirmRepository.outputs.repositories
+    imageIds: $steps.listImages.outputs.imageIds
+    images: $steps.resolveImages.outputs.images

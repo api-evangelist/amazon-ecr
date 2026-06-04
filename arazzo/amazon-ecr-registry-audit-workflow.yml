@@ -1,0 +1,96 @@
+arazzo: 1.0.1
+info:
+  title: Amazon ECR Registry Audit
+  summary: Page through every repository in a registry following the DescribeRepositories token loop.
+  description: >-
+    Audits an entire Amazon ECR registry by describing all of its repositories
+    and following the nextToken pagination loop until every page has been read.
+    The flow requests the first page of repositories, then branches on the
+    presence of a pagination token to keep requesting subsequent pages until the
+    registry has been fully enumerated. Every step spells out its AWS JSON
+    request inline, including the documented X-Amz-Target header, so the flow can
+    be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: amazonEcrApi
+  url: ../openapi/amazon-ecr-openapi.yml
+  type: openapi
+workflows:
+- workflowId: registry-audit
+  summary: Enumerate every repository in a registry by walking the pagination loop.
+  description: >-
+    Describes the first page of repositories and then loops on the nextToken
+    pagination cursor until all repositories in the registry have been read.
+  inputs:
+    type: object
+    properties:
+      registryId:
+        type: string
+        description: The AWS account ID associated with the registry to audit.
+      maxResults:
+        type: integer
+        description: The maximum number of repository results per page.
+  steps:
+  - stepId: describeFirstPage
+    description: >-
+      Describe the first page of repositories in the registry.
+    operationId: describeRepositories
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AmazonEC2ContainerRegistry_V20150921.DescribeRepositories
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        registryId: $inputs.registryId
+        maxResults: $inputs.maxResults
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      repositories: $response.body#/repositories
+      nextToken: $response.body#/nextToken
+    onSuccess:
+    - name: morePages
+      type: goto
+      stepId: describeNextPage
+      criteria:
+      - context: $response.body
+        condition: $.nextToken != null
+        type: jsonpath
+    - name: complete
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.nextToken == null
+        type: jsonpath
+  - stepId: describeNextPage
+    description: >-
+      Request the next page of repositories using the pagination token from the
+      previous response, looping until no token remains.
+    operationId: describeRepositories
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AmazonEC2ContainerRegistry_V20150921.DescribeRepositories
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        registryId: $inputs.registryId
+        maxResults: $inputs.maxResults
+        nextToken: $steps.describeFirstPage.outputs.nextToken
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      repositories: $response.body#/repositories
+      nextToken: $response.body#/nextToken
+    onSuccess:
+    - name: stillMorePages
+      type: goto
+      stepId: describeNextPage
+      criteria:
+      - context: $response.body
+        condition: $.nextToken != null
+        type: jsonpath
+  outputs:
+    firstPageRepositories: $steps.describeFirstPage.outputs.repositories
+    nextPageRepositories: $steps.describeNextPage.outputs.repositories
