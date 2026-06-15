@@ -1,0 +1,816 @@
+{
+  "item": [
+    {
+      "id": "6ade8405-a6bc-497a-98dc-cbbc8d8aea06",
+      "name": "#BatchGetImage",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dccd8786-7131-498e-bd61-d2f5ebfbeb71",
+          "name": "Amazon ECR Batch Get Image",
+          "request": {
+            "name": "Amazon ECR Batch Get Image",
+            "description": {
+              "content": "Gets detailed information for an image. Images are specified with either an imageTag or imageDigest.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "BatchGetImage",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"repositoryName\": \"<string>\",\n  \"imageIds\": [\n    {\n      \"imageDigest\": \"<string>\",\n      \"imageTag\": \"<string>\"\n    },\n    {\n      \"imageDigest\": \"<string>\",\n      \"imageTag\": \"<string>\"\n    }\n  ],\n  \"registryId\": \"<string>\",\n  \"acceptedMediaTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "659d8892-ab84-4996-9f9a-85f65a1da374",
+              "name": "Successful response with the image details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "BatchGetImage",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AmazonEC2ContainerRegistry_V20150921.BatchGetImage"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0733a69d-eb7d-4991-a22f-c3d61bdecc71",
+              "name": "Bad request error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "BatchGetImage",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AmazonEC2ContainerRegistry_V20150921.BatchGetImage"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "df5e7871-6a5a-4f91-bf4d-83d1532adc8d",
+      "name": "#DeleteRepository",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8e41591d-4237-44d9-bfe1-4249e2f4d539",
+          "name": "Amazon ECR Delete Repository",
+          "request": {
+            "name": "Amazon ECR Delete Repository",
+            "description": {
+              "content": "Deletes a repository. If the repository contains images, you must either delete all images or use the force option to delete the repository.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "DeleteRepository",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"repositoryName\": \"<string>\",\n  \"registryId\": \"<string>\",\n  \"force\": \"<boolean>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "e5d8596d-2d4b-4970-a47a-ca28523e5e6c",
+              "name": "Successful response with the deleted repository details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "DeleteRepository",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AmazonEC2ContainerRegistry_V20150921.DeleteRepository"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8ce6e44b-efc7-41f4-b124-e83174506f71",
+              "name": "Bad request error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "DeleteRepository",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AmazonEC2ContainerRegistry_V20150921.DeleteRepository"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a2ce3212-b536-4ed7-afd8-cb60a35bbea4",
+      "name": "#DescribeRepositories",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b686eab6-694e-490b-939c-c596d77599d1",
+          "name": "Amazon ECR Describe Repositories",
+          "request": {
+            "name": "Amazon ECR Describe Repositories",
+            "description": {
+              "content": "Describes image repositories in a registry.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "DescribeRepositories",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"registryId\": \"<string>\",\n  \"repositoryNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"nextToken\": \"<string>\",\n  \"maxResults\": \"<integer>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "89717c0e-d247-43b4-938b-818dd35fbd96",
+              "name": "Successful response with repository details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "DescribeRepositories",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AmazonEC2ContainerRegistry_V20150921.DescribeRepositories"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"repositories\": [\n    \"example-string\"\n  ],\n  \"nextToken\": \"example-string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "293e1171-a4f3-44ad-ad12-65df4c5d939a",
+      "name": "#ListImages",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "de33e62e-9105-48b2-b26b-f0045eacfea6",
+          "name": "Amazon ECR List Images",
+          "request": {
+            "name": "Amazon ECR List Images",
+            "description": {
+              "content": "Lists all the image IDs for the specified repository.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "ListImages",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"repositoryName\": \"<string>\",\n  \"registryId\": \"<string>\",\n  \"nextToken\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"filter\": {\n    \"tagStatus\": \"<string>\"\n  }\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "67c8ada3-d62e-498e-9c1d-2cb796618a2a",
+              "name": "Successful response with image IDs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "ListImages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AmazonEC2ContainerRegistry_V20150921.ListImages"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "16827a8c-a577-40d0-8e7f-c481be2e9bcc",
+              "name": "Bad request error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "ListImages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AmazonEC2ContainerRegistry_V20150921.ListImages"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f8df1a9d-df4c-427c-856b-e01b33874b09",
+      "name": "#PutImage",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1465fb80-bd0c-4797-96a7-7cb097652b53",
+          "name": "Amazon ECR Put Image",
+          "request": {
+            "name": "Amazon ECR Put Image",
+            "description": {
+              "content": "Creates or updates the image manifest and tags associated with an image.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "PutImage",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"repositoryName\": \"<string>\",\n  \"imageManifest\": \"<string>\",\n  \"registryId\": \"<string>\",\n  \"imageManifestMediaType\": \"<string>\",\n  \"imageTag\": \"<string>\",\n  \"imageDigest\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "64164563-696f-45c8-8234-4578c8bc3939",
+              "name": "Successful response with the image details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "PutImage",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AmazonEC2ContainerRegistry_V20150921.PutImage"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "47b79cc7-0fb3-425c-bd50-8856917da42a",
+              "name": "Bad request error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "PutImage",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AmazonEC2ContainerRegistry_V20150921.PutImage"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f4e24401-d3e2-4d31-a594-368725472ca0",
+      "name": "Amazon ECR Create Repository",
+      "request": {
+        "name": "Amazon ECR Create Repository",
+        "description": {
+          "content": "Creates a repository in a registry. If the repository already exists, an exception is thrown.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ""
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) ",
+            "key": "X-Amz-Target",
+            "value": "<string>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/x-amz-json-1.1"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"repositoryName\": \"<string>\",\n  \"tags\": [\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ],\n  \"imageTagMutability\": \"<string>\",\n  \"imageScanningConfiguration\": {\n    \"scanOnPush\": \"<boolean>\"\n  },\n  \"encryptionConfiguration\": {\n    \"encryptionType\": \"<string>\",\n    \"kmsKey\": \"<string>\"\n  }\n}"
+        }
+      },
+      "response": [
+        {
+          "id": "f7cdee01-98a8-4963-b130-5df9321fb760",
+          "name": "Successful response with the created repository details.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "AmazonEC2ContainerRegistry_V20150921.CreateRepository"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"repository\": \"example-string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "28fc5928-bdef-4424-8b08-0a6e9ed92569",
+          "name": "Bad request error.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "AmazonEC2ContainerRegistry_V20150921.CreateRepository"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ecr.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4e633fcd-905c-41a9-ab10-338fbeb55c5c",
+    "name": "Amazon ECR Amazon Elastic Container Registry (ECR) API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Amazon ECR is a fully managed container registry for storing, managing, sharing, and deploying container images and artifacts.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+      "type": "text/plain"
+    }
+  }
+}

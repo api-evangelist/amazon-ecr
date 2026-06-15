@@ -1,0 +1,184 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon ECR Amazon Elastic Container Registry (ECR) API",
+    "version": "2015-09-21"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Default",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon ECR Create Repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ecr.amazonaws.com/",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": "AmazonEC2ContainerRegistry_V20150921.CreateRepository"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a repository in a registry. If the repository already exists, an exception is thrown."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "#DescribeRepositories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon ECR Describe Repositories",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ecr.amazonaws.com/#DescribeRepositories",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": "AmazonEC2ContainerRegistry_V20150921.DescribeRepositories"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Describes image repositories in a registry."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "#DeleteRepository",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon ECR Delete Repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ecr.amazonaws.com/#DeleteRepository",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": "AmazonEC2ContainerRegistry_V20150921.DeleteRepository"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes a repository. If the repository contains images, you must either delete all images or use the force option to delete the repository."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "#PutImage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon ECR Put Image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ecr.amazonaws.com/#PutImage",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": "AmazonEC2ContainerRegistry_V20150921.PutImage"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates the image manifest and tags associated with an image."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "#BatchGetImage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon ECR Batch Get Image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ecr.amazonaws.com/#BatchGetImage",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": "AmazonEC2ContainerRegistry_V20150921.BatchGetImage"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Gets detailed information for an image. Images are specified with either an imageTag or imageDigest."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "#ListImages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon ECR List Images",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ecr.amazonaws.com/#ListImages",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": "AmazonEC2ContainerRegistry_V20150921.ListImages"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lists all the image IDs for the specified repository."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
