@@ -50,32 +50,29 @@ apis:
         url: https://docs.aws.amazon.com/AmazonECR/latest/userguide/security.html
       - type: JSONStructure
         url: json-structure/amazon-ecr-repository-structure.json
-      - type: Example
+      - type: Examples
         url: examples/amazon-ecr-repository-example.json
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/amazon-ecr/overview
-  - type: ArazzoWorkflows
-    url: arazzo/
-    workflows:
-      - url: arazzo/amazon-ecr-decommission-repository-workflow.yml
-        name: Amazon ECR Decommission Repository
-        summary: Inventory a repository's images, then delete it with a force branch when images remain.
-      - url: arazzo/amazon-ecr-ensure-repository-and-seed-image-workflow.yml
-        name: Amazon ECR Ensure Repository and Seed Image
-        summary: Describe a repository, create it only when missing, then seed it with an image manifest.
-      - url: arazzo/amazon-ecr-image-inventory-workflow.yml
-        name: Amazon ECR Image Inventory
-        summary: Describe a repository, list its image IDs with pagination, and fetch image detail.
-      - url: arazzo/amazon-ecr-provision-repository-workflow.yml
-        name: Amazon ECR Provision Repository
-        summary: Create a container repository, confirm it exists, and inspect its current images.
-      - url: arazzo/amazon-ecr-publish-image-workflow.yml
-        name: Amazon ECR Publish Image
-        summary: Confirm a repository exists, put an image manifest, then read the image back.
-      - url: arazzo/amazon-ecr-registry-audit-workflow.yml
-        name: Amazon ECR Registry Audit
-        summary: Page through every repository in a registry following the DescribeRepositories token loop.
+  - type: Arazzo
+    url: arazzo/amazon-ecr-decommission-repository-workflow.yml
+    name: Amazon ECR Decommission Repository
+  - type: Arazzo
+    url: arazzo/amazon-ecr-ensure-repository-and-seed-image-workflow.yml
+    name: Amazon ECR Ensure Repository and Seed Image
+  - type: Arazzo
+    url: arazzo/amazon-ecr-image-inventory-workflow.yml
+    name: Amazon ECR Image Inventory
+  - type: Arazzo
+    url: arazzo/amazon-ecr-provision-repository-workflow.yml
+    name: Amazon ECR Provision Repository
+  - type: Arazzo
+    url: arazzo/amazon-ecr-publish-image-workflow.yml
+    name: Amazon ECR Publish Image
+  - type: Arazzo
+    url: arazzo/amazon-ecr-registry-audit-workflow.yml
+    name: Amazon ECR Registry Audit
   - type: Portal
     url: https://aws.amazon.com/
   - type: DeveloperPortal
@@ -94,7 +91,7 @@ common:
     url: https://github.com/aws
   - type: Console
     url: https://console.aws.amazon.com/
-  - type: SignUp
+  - type: Signup
     url: https://portal.aws.amazon.com/billing/signup
   - type: Login
     url: https://signin.aws.amazon.com/
