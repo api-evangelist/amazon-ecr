@@ -53,6 +53,14 @@ apis:
       - type: Examples
         url: examples/amazon-ecr-repository-example.json
 common:
+  - type: TrustCenter
+    url: security/amazon-ecr-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/amazon-ecr-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/amazon-ecr-domain-security.yml
+  - type: Authentication
+    url: authentication/amazon-ecr-authentication.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/amazon-ecr/overview
   - type: Arazzo
