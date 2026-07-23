@@ -1,0 +1,148 @@
+openapi: 3.1.0
+info:
+  title: 'Amazon ECR Amazon Elastic Container Registry (ECR) Amazon ECR Amazon Elastic Container Registry (ECR) API #DescribeRepositories API'
+  description: Amazon ECR is a fully managed container registry for storing, managing, sharing, and deploying container images and artifacts.
+  version: '2015-09-21'
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+    url: https://aws.amazon.com/ecr/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://api.ecr.amazonaws.com
+  description: Amazon ECR API endpoint
+tags:
+- name: '#DescribeRepositories'
+paths:
+  /#DescribeRepositories:
+    post:
+      operationId: describeRepositories
+      summary: Amazon ECR Describe Repositories
+      description: Describes image repositories in a registry.
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                registryId:
+                  type: string
+                  description: The AWS account ID associated with the registry.
+                repositoryNames:
+                  type: array
+                  items:
+                    type: string
+                  description: A list of repositories to describe.
+                nextToken:
+                  type: string
+                  description: Pagination token from a previous request.
+                maxResults:
+                  type: integer
+                  description: The maximum number of repository results.
+            examples:
+              describeRepositoriesRequestExample:
+                summary: Default describeRepositories request
+                x-microcks-default: true
+                value: {}
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AmazonEC2ContainerRegistry_V20150921.DescribeRepositories
+        example: AmazonEC2ContainerRegistry_V20150921.DescribeRepositories
+      responses:
+        '200':
+          description: Successful response with repository details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeRepositoriesResponse'
+              examples:
+                describeRepositories200Example:
+                  summary: Default describeRepositories 200 response
+                  x-microcks-default: true
+                  value:
+                    repositories:
+                    - example-string
+                    nextToken: example-string
+      tags:
+      - '#DescribeRepositories'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    DescribeRepositoriesResponse:
+      type: object
+      properties:
+        repositories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Repository'
+          example:
+          - example-string
+        nextToken:
+          type: string
+          example: example-string
+    Repository:
+      type: object
+      properties:
+        repositoryArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the repository.
+          example: arn:aws:service:us-east-1:123456789012:resource/example
+        registryId:
+          type: string
+          description: The AWS account ID associated with the registry.
+          example: example-id-1234
+        repositoryName:
+          type: string
+          description: The name of the repository.
+          example: example-resource-name
+        repositoryUri:
+          type: string
+          description: The URI for the repository.
+          example: example-string
+        createdAt:
+          type: string
+          format: date-time
+          description: The date and time the repository was created.
+          example: '2025-03-15T14:30:00Z'
+        imageTagMutability:
+          type: string
+          enum:
+          - MUTABLE
+          - IMMUTABLE
+          description: The tag mutability setting for the repository.
+          example: MUTABLE
+        imageScanningConfiguration:
+          type: object
+          properties:
+            scanOnPush:
+              type: boolean
+          description: The image scanning configuration for the repository.
+          example:
+            scanOnPush: true
+        encryptionConfiguration:
+          type: object
+          properties:
+            encryptionType:
+              type: string
+            kmsKey:
+              type: string
+          description: The encryption configuration for the repository.
+          example:
+            encryptionType: standard
+            kmsKey: example-string
+  securitySchemes:
+    aws_sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication.

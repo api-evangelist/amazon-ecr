@@ -1,0 +1,82 @@
+openapi: 3.1.0
+info:
+  title: 'Amazon ECR Amazon Elastic Container Registry (ECR) Amazon ECR Amazon Elastic Container Registry (ECR) API #PutImage API'
+  description: Amazon ECR is a fully managed container registry for storing, managing, sharing, and deploying container images and artifacts.
+  version: '2015-09-21'
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+    url: https://aws.amazon.com/ecr/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://api.ecr.amazonaws.com
+  description: Amazon ECR API endpoint
+tags:
+- name: '#PutImage'
+paths:
+  /#PutImage:
+    post:
+      operationId: putImage
+      summary: Amazon ECR Put Image
+      description: Creates or updates the image manifest and tags associated with an image.
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+              - repositoryName
+              - imageManifest
+              properties:
+                registryId:
+                  type: string
+                  description: The AWS account ID associated with the registry.
+                repositoryName:
+                  type: string
+                  description: The name of the repository in which to put the image.
+                imageManifest:
+                  type: string
+                  description: The image manifest corresponding to the image to be uploaded.
+                imageManifestMediaType:
+                  type: string
+                  description: The media type of the image manifest.
+                imageTag:
+                  type: string
+                  description: The tag to associate with the image.
+                imageDigest:
+                  type: string
+                  description: The image digest of the image manifest.
+            examples:
+              putImageRequestExample:
+                summary: Default putImage request
+                x-microcks-default: true
+                value: {}
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AmazonEC2ContainerRegistry_V20150921.PutImage
+        example: AmazonEC2ContainerRegistry_V20150921.PutImage
+      responses:
+        '200':
+          description: Successful response with the image details.
+        '400':
+          description: Bad request error.
+      tags:
+      - '#PutImage'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    aws_sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication.

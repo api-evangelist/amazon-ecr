@@ -1,0 +1,72 @@
+openapi: 3.1.0
+info:
+  title: 'Amazon ECR Amazon Elastic Container Registry (ECR) Amazon ECR Amazon Elastic Container Registry (ECR) API #DeleteRepository API'
+  description: Amazon ECR is a fully managed container registry for storing, managing, sharing, and deploying container images and artifacts.
+  version: '2015-09-21'
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+    url: https://aws.amazon.com/ecr/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://api.ecr.amazonaws.com
+  description: Amazon ECR API endpoint
+tags:
+- name: '#DeleteRepository'
+paths:
+  /#DeleteRepository:
+    post:
+      operationId: deleteRepository
+      summary: Amazon ECR Delete Repository
+      description: Deletes a repository. If the repository contains images, you must either delete all images or use the force option to delete the repository.
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              required:
+              - repositoryName
+              properties:
+                registryId:
+                  type: string
+                  description: The AWS account ID associated with the registry.
+                repositoryName:
+                  type: string
+                  description: The name of the repository to delete.
+                force:
+                  type: boolean
+                  description: If true, deleting the repository will force deletion of all contained images.
+            examples:
+              deleteRepositoryRequestExample:
+                summary: Default deleteRepository request
+                x-microcks-default: true
+                value: {}
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AmazonEC2ContainerRegistry_V20150921.DeleteRepository
+        example: AmazonEC2ContainerRegistry_V20150921.DeleteRepository
+      responses:
+        '200':
+          description: Successful response with the deleted repository details.
+        '400':
+          description: Bad request error.
+      tags:
+      - '#DeleteRepository'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    aws_sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication.
