@@ -4,6 +4,19 @@ description: >-
   share, and deploy container images and artifacts. ECR eliminates the need to operate your own container repositories
   or worry about scaling the underlying infrastructure, and integrates with Amazon ECS and Amazon EKS for simplified
   development to production workflows.
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
 url: https://aws.amazon.com/ecr/
 created: '2024-01-15'
@@ -18,40 +31,195 @@ tags:
   - ECR
   - OCI
 apis:
-  - name: Amazon ECR API
-    description: API for managing Amazon ECR repositories, images, and related resources.
-    image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
-    url: https://aws.amazon.com/ecr/
-    baseURL: https://api.ecr.amazonaws.com
-    properties:
-      - type: Documentation
-        url: https://docs.aws.amazon.com/AmazonECR/latest/userguide/
-      - type: OpenAPI
-        url: openapi/amazon-ecr-openapi.yml
-      - type: OpenAPI
-        url: https://api.apis.guru/v2/specs/amazonaws.com/ecr/2015-09-21/openapi.yaml
-      - type: JSONSchema
-        url: json-schema/amazon-ecr-repository-schema.json
-      - type: JSONLD
-        url: json-ld/amazon-ecr-context.jsonld
-      - type: Pricing
-        url: https://aws.amazon.com/ecr/pricing/
-      - type: GettingStarted
-        url: https://aws.amazon.com/ecr/getting-started/
-      - type: FAQ
-        url: https://aws.amazon.com/ecr/faqs/
-      - type: Documentation
-        url: https://docs.aws.amazon.com/AmazonECR/latest/userguide/
-      - type: APIReference
-        url: https://docs.aws.amazon.com/AmazonECR/latest/APIReference/
-      - type: Documentation
-        url: https://docs.aws.amazon.com/cli/latest/reference/ecr/
-      - type: Security
-        url: https://docs.aws.amazon.com/AmazonECR/latest/userguide/security.html
-      - type: JSONStructure
-        url: json-structure/amazon-ecr-repository-structure.json
-      - type: Examples
-        url: examples/amazon-ecr-repository-example.json
+- aid: amazon-ecr:amazon-ecr-amazon-ecr-amazon-elastic-container-registry-ecr-api-api
+  name: Amazon ECR Amazon ECR Amazon Elastic Container Registry (ECR) API API
+  description: >-
+    The Amazon ECR Amazon Elastic Container Registry (ECR) API API from Amazon ECR — 1 operation(s) for
+    amazon ecr amazon elastic container registry (ecr) api.
+  baseURL: https://api.ecr.amazonaws.com
+  tags:
+  - Amazon ECR Amazon Elastic Container Registry (ECR) API
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ecr-amazon-ecr-amazon-elastic-container-registry-ecr-api-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/AmazonECR/latest/userguide/
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-repository-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-ecr-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/ecr/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/ecr/getting-started/
+  - type: FAQ
+    url: https://aws.amazon.com/ecr/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/AmazonECR/latest/APIReference/
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cli/latest/reference/ecr/
+  - type: Security
+    url: https://docs.aws.amazon.com/AmazonECR/latest/userguide/security.html
+  - type: JSONStructure
+    url: json-structure/amazon-ecr-repository-structure.json
+  - type: Examples
+    url: examples/amazon-ecr-repository-example.json
+- aid: amazon-ecr:amazon-ecr-batchgetimage-api
+  name: 'Amazon ECR #BatchGetImage API'
+  description: 'The #BatchGetImage API from Amazon ECR — 1 operation(s) for #batchgetimage.'
+  baseURL: https://api.ecr.amazonaws.com
+  tags:
+  - '#BatchGetImage'
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ecr-batchgetimage-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/AmazonECR/latest/userguide/
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-repository-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-ecr-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/ecr/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/ecr/getting-started/
+  - type: FAQ
+    url: https://aws.amazon.com/ecr/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/AmazonECR/latest/APIReference/
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cli/latest/reference/ecr/
+  - type: Security
+    url: https://docs.aws.amazon.com/AmazonECR/latest/userguide/security.html
+  - type: JSONStructure
+    url: json-structure/amazon-ecr-repository-structure.json
+  - type: Examples
+    url: examples/amazon-ecr-repository-example.json
+- aid: amazon-ecr:amazon-ecr-deleterepository-api
+  name: 'Amazon ECR #DeleteRepository API'
+  description: 'The #DeleteRepository API from Amazon ECR — 1 operation(s) for #deleterepository.'
+  baseURL: https://api.ecr.amazonaws.com
+  tags:
+  - '#DeleteRepository'
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ecr-deleterepository-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/AmazonECR/latest/userguide/
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-repository-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-ecr-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/ecr/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/ecr/getting-started/
+  - type: FAQ
+    url: https://aws.amazon.com/ecr/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/AmazonECR/latest/APIReference/
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cli/latest/reference/ecr/
+  - type: Security
+    url: https://docs.aws.amazon.com/AmazonECR/latest/userguide/security.html
+  - type: JSONStructure
+    url: json-structure/amazon-ecr-repository-structure.json
+  - type: Examples
+    url: examples/amazon-ecr-repository-example.json
+- aid: amazon-ecr:amazon-ecr-describerepositories-api
+  name: 'Amazon ECR #DescribeRepositories API'
+  description: >-
+    The #DescribeRepositories API from Amazon ECR — 1 operation(s) for #describerepositories.
+  baseURL: https://api.ecr.amazonaws.com
+  tags:
+  - '#DescribeRepositories'
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ecr-describerepositories-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/AmazonECR/latest/userguide/
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-repository-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-ecr-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/ecr/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/ecr/getting-started/
+  - type: FAQ
+    url: https://aws.amazon.com/ecr/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/AmazonECR/latest/APIReference/
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cli/latest/reference/ecr/
+  - type: Security
+    url: https://docs.aws.amazon.com/AmazonECR/latest/userguide/security.html
+  - type: JSONStructure
+    url: json-structure/amazon-ecr-repository-structure.json
+  - type: Examples
+    url: examples/amazon-ecr-repository-example.json
+- aid: amazon-ecr:amazon-ecr-listimages-api
+  name: 'Amazon ECR #ListImages API'
+  description: 'The #ListImages API from Amazon ECR — 1 operation(s) for #listimages.'
+  baseURL: https://api.ecr.amazonaws.com
+  tags:
+  - '#ListImages'
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ecr-listimages-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/AmazonECR/latest/userguide/
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-repository-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-ecr-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/ecr/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/ecr/getting-started/
+  - type: FAQ
+    url: https://aws.amazon.com/ecr/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/AmazonECR/latest/APIReference/
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cli/latest/reference/ecr/
+  - type: Security
+    url: https://docs.aws.amazon.com/AmazonECR/latest/userguide/security.html
+  - type: JSONStructure
+    url: json-structure/amazon-ecr-repository-structure.json
+  - type: Examples
+    url: examples/amazon-ecr-repository-example.json
+- aid: amazon-ecr:amazon-ecr-putimage-api
+  name: 'Amazon ECR #PutImage API'
+  description: 'The #PutImage API from Amazon ECR — 1 operation(s) for #putimage.'
+  baseURL: https://api.ecr.amazonaws.com
+  tags:
+  - '#PutImage'
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ecr-putimage-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/AmazonECR/latest/userguide/
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-repository-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-ecr-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/ecr/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/ecr/getting-started/
+  - type: FAQ
+    url: https://aws.amazon.com/ecr/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/AmazonECR/latest/APIReference/
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cli/latest/reference/ecr/
+  - type: Security
+    url: https://docs.aws.amazon.com/AmazonECR/latest/userguide/security.html
+  - type: JSONStructure
+    url: json-structure/amazon-ecr-repository-structure.json
+  - type: Examples
+    url: examples/amazon-ecr-repository-example.json
 common:
   - type: AgenticAccess
     url: agentic-access/amazon-ecr-agentic-access.yml
