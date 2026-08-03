@@ -1,0 +1,24 @@
+{
+  "provider": "amazon-ecr",
+  "sources": [
+    "amazon-ecr-amazon-ecr-amazon-elastic-container-registry-ecr-api-api-openapi.yml",
+    "amazon-ecr-batchgetimage-api-openapi.yml",
+    "amazon-ecr-deleterepository-api-openapi.yml",
+    "amazon-ecr-describerepositories-api-openapi.yml",
+    "amazon-ecr-listimages-api-openapi.yml",
+    "amazon-ecr-putimage-api-openapi.yml"
+  ],
+  "outputs": [
+    "amazon-ecr-amazon-ecr-amazon-elastic-container-registry-ecr-api-api-openapi.yml",
+    "amazon-ecr-batchgetimage-api-openapi.yml",
+    "amazon-ecr-deleterepository-api-openapi.yml",
+    "amazon-ecr-describerepositories-api-openapi.yml",
+    "amazon-ecr-listimages-api-openapi.yml",
+    "amazon-ecr-putimage-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
