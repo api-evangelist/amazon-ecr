@@ -4,6 +4,7 @@ description: >-
   share, and deploy container images and artifacts. ECR eliminates the need to operate your own container repositories
   or worry about scaling the underlying infrastructure, and integrates with Amazon ECS and Amazon EKS for simplified
   development to production workflows.
+specificationVersion: '0.23'
 accessModel:
   pricing: freemium
   onboarding: self-serve
