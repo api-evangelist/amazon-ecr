@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon ECR Amazon Elastic Container Registry (ECR) Amazon ECR Amazon Elastic Container Registry (ECR) API #BatchGetImage API",
+    "version": "2015-09-21"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "#BatchGetImage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon ECR Batch Get Image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ecr.amazonaws.com/#BatchGetImage",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": "AmazonEC2ContainerRegistry_V20150921.BatchGetImage"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Gets detailed information for an image. Images are specified with either an imageTag or imageDigest."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

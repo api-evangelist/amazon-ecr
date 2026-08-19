@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon ECR Amazon Elastic Container Registry (ECR) Amazon ECR Amazon Elastic Container Registry (ECR) API #ListImages API",
+    "version": "2015-09-21"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "#ListImages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon ECR List Images",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ecr.amazonaws.com/#ListImages",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": "AmazonEC2ContainerRegistry_V20150921.ListImages"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lists all the image IDs for the specified repository."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

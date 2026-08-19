@@ -1,0 +1,160 @@
+{
+  "item": [
+    {
+      "id": "bfa6457c-adde-4cf0-99d3-bc4f2fdb355b",
+      "name": "#DeleteRepository",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9aafd446-f22f-4bd0-8e99-d182536e4897",
+          "name": "Amazon ECR Delete Repository",
+          "request": {
+            "name": "Amazon ECR Delete Repository",
+            "description": {
+              "content": "Deletes a repository. If the repository contains images, you must either delete all images or use the force option to delete the repository.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "DeleteRepository",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"repositoryName\": \"<string>\",\n  \"registryId\": \"<string>\",\n  \"force\": \"<boolean>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "13aa6120-d76c-43b5-a1c5-619ba80737b9",
+              "name": "Successful response with the deleted repository details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "DeleteRepository",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AmazonEC2ContainerRegistry_V20150921.DeleteRepository"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "68f5ff03-6adb-4cc4-80f9-0f71d20c505d",
+              "name": "Bad request error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "DeleteRepository",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AmazonEC2ContainerRegistry_V20150921.DeleteRepository"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ecr.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e53f0106-c07a-4465-a867-e87bb848d87b",
+    "name": "Amazon ECR Amazon Elastic Container Registry (ECR) Amazon ECR Amazon Elastic Container Registry (ECR) API #DeleteRepository API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Amazon ECR is a fully managed container registry for storing, managing, sharing, and deploying container images and artifacts.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+      "type": "text/plain"
+    }
+  }
+}

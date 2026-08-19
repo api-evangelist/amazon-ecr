@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon ECR Amazon Elastic Container Registry (ECR) Amazon ECR Amazon Elastic Container Registry (ECR) API #PutImage API",
+    "version": "2015-09-21"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "#PutImage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon ECR Put Image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ecr.amazonaws.com/#PutImage",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": "AmazonEC2ContainerRegistry_V20150921.PutImage"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates the image manifest and tags associated with an image."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon ECR Amazon Elastic Container Registry (ECR) Amazon ECR Amazon Elastic Container Registry (ECR) API #DeleteRepository API",
+    "version": "2015-09-21"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "#DeleteRepository",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon ECR Delete Repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ecr.amazonaws.com/#DeleteRepository",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": "AmazonEC2ContainerRegistry_V20150921.DeleteRepository"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes a repository. If the repository contains images, you must either delete all images or use the force option to delete the repository."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

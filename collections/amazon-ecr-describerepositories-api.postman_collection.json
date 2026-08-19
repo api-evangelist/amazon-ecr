@@ -1,0 +1,127 @@
+{
+  "item": [
+    {
+      "id": "332a0ac1-4dc5-449e-a154-29696f151ce6",
+      "name": "#DescribeRepositories",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e897e1a1-d0e0-455d-bae7-b6380d872b26",
+          "name": "Amazon ECR Describe Repositories",
+          "request": {
+            "name": "Amazon ECR Describe Repositories",
+            "description": {
+              "content": "Describes image repositories in a registry.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "DescribeRepositories",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"registryId\": \"<string>\",\n  \"repositoryNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"nextToken\": \"<string>\",\n  \"maxResults\": \"<integer>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "04806eb4-de87-4993-8f0c-aa533cd56d5b",
+              "name": "Successful response with repository details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "DescribeRepositories",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AmazonEC2ContainerRegistry_V20150921.DescribeRepositories"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"repositories\": [\n    \"example-string\"\n  ],\n  \"nextToken\": \"example-string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ecr.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "77a880dc-8066-4f0d-b72e-e78c6ee77ad2",
+    "name": "Amazon ECR Amazon Elastic Container Registry (ECR) Amazon ECR Amazon Elastic Container Registry (ECR) API #DescribeRepositories API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Amazon ECR is a fully managed container registry for storing, managing, sharing, and deploying container images and artifacts.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+      "type": "text/plain"
+    }
+  }
+}
