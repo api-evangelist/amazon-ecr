@@ -38,7 +38,8 @@ apis:
     The Amazon ECR Amazon Elastic Container Registry (ECR) API API from Amazon ECR — 1 operation(s) for
     amazon ecr amazon elastic container registry (ecr) api.
   baseURL: https://api.ecr.amazonaws.com
-  tags:
+  tags: []
+  tags_raw:
   - Amazon ECR Amazon Elastic Container Registry (ECR) API
   properties:
   - type: OpenAPI
@@ -164,6 +165,8 @@ apis:
   description: 'The #ListImages API from Amazon ECR — 1 operation(s) for #listimages.'
   baseURL: https://api.ecr.amazonaws.com
   tags:
+  - ListImages
+  tags_raw:
   - '#ListImages'
   properties:
   - type: OpenAPI
