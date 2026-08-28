@@ -12,8 +12,14 @@ info:
     and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: amazonEcrApi
-  url: ../openapi/amazon-ecr-openapi.yml
+- name: batchgetimageApi
+  url: ../openapi/amazon-ecr-batchgetimage-api-openapi.yml
+  type: openapi
+- name: describerepositoriesApi
+  url: ../openapi/amazon-ecr-describerepositories-api-openapi.yml
+  type: openapi
+- name: putimageApi
+  url: ../openapi/amazon-ecr-putimage-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: publish-image

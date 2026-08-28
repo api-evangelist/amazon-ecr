@@ -14,8 +14,11 @@ info:
     executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: amazonEcrApi
-  url: ../openapi/amazon-ecr-openapi.yml
+- name: deleterepositoryApi
+  url: ../openapi/amazon-ecr-deleterepository-api-openapi.yml
+  type: openapi
+- name: listimagesApi
+  url: ../openapi/amazon-ecr-listimages-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: decommission-repository

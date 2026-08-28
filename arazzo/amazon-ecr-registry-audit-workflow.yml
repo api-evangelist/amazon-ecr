@@ -12,8 +12,8 @@ info:
     be read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: amazonEcrApi
-  url: ../openapi/amazon-ecr-openapi.yml
+- name: describerepositoriesApi
+  url: ../openapi/amazon-ecr-describerepositories-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: registry-audit
