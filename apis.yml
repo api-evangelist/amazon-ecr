@@ -177,7 +177,7 @@ apis:
   description: 'The #ListImages API from Amazon ECR — 1 operation(s) for #listimages.'
   baseURL: https://api.ecr.amazonaws.com
   tags:
-  - '#ListImages'
+  - ListImages
   tags_raw:
   - '#ListImages'
   properties:
