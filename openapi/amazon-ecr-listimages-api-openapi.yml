@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: 'Amazon ECR Amazon Elastic Container Registry (ECR) Amazon ECR Amazon Elastic Container Registry (ECR) API #ListImages API'
+  title: 'Amazon ECR Amazon Elastic Container Registry (ECR) Amazon ECR Amazon Elastic Container Registry (ECR) API #ListImages #List Images #List Images API'
   description: Amazon ECR is a fully managed container registry for storing, managing, sharing, and deploying container images and artifacts.
   version: '2015-09-21'
   contact:
