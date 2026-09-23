@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: 'Amazon ECR Amazon Elastic Container Registry (ECR) Amazon ECR Amazon Elastic Container Registry (ECR) API #DescribeRepositories #Describe Repositories #Describe Repositories API'
+  title: Amazon ECR Amazon Elastic Container Registry (ECR)…
   description: Amazon ECR is a fully managed container registry for storing, managing, sharing, and deploying container images and artifacts.
   version: '2015-09-21'
   contact:
@@ -78,18 +78,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DescribeRepositoriesResponse:
-      type: object
-      properties:
-        repositories:
-          type: array
-          items:
-            $ref: '#/components/schemas/Repository'
-          example:
-          - example-string
-        nextToken:
-          type: string
-          example: example-string
     Repository:
       type: object
       properties:
@@ -140,6 +128,18 @@ components:
           example:
             encryptionType: standard
             kmsKey: example-string
+    DescribeRepositoriesResponse:
+      type: object
+      properties:
+        repositories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Repository'
+          example:
+          - example-string
+        nextToken:
+          type: string
+          example: example-string
   securitySchemes:
     aws_sigv4:
       type: apiKey

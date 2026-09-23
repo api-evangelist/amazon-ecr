@@ -1,26 +1,35 @@
 {
   "provider": "amazon-ecr",
   "sources": [
-    "amazon-ecr-amazon-ecr-amazon-elastic-container-registry-ecr-api-api-openapi.yml",
-    "amazon-ecr-batchgetimage-api-openapi.yml",
-    "amazon-ecr-deleterepository-api-openapi.yml",
-    "amazon-ecr-describerepositories-api-openapi.yml",
-    "amazon-ecr-listimages-api-openapi.yml",
-    "amazon-ecr-putimage-api-openapi.yml"
+    "_original/amazon-ecr-openapi.yml"
   ],
   "outputs": [
-    "amazon-ecr-amazon-ecr-amazon-elastic-container-registry-ecr-api-api-openapi.yml",
     "amazon-ecr-batchgetimage-api-openapi.yml",
     "amazon-ecr-deleterepository-api-openapi.yml",
     "amazon-ecr-describerepositories-api-openapi.yml",
     "amazon-ecr-listimages-api-openapi.yml",
-    "amazon-ecr-putimage-api-openapi.yml"
+    "amazon-ecr-putimage-api-openapi.yml",
+    "amazon-ecr-amazon-ecr-amazon-elastic-container-registry-ecr-api-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
-    "apis.yml register: already-registered"
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "amazon-ecr-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "amazon-ecr-openapi.yml: tagged paths POST / -> Amazon ECR Amazon Elastic Container Registry (ECR) API",
+    "amazon-ecr-openapi.yml: declared missing tag: Amazon ECR Amazon Elastic Container Registry (ECR) API",
+    "superseded outputs removed: amazon-ecr-list-images-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 6 total)"
   ],
-  "skipped": []
+  "skipped": [
+    "amazon-ecr-amazon-ecr-amazon-elastic-container-registry-ecr-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-ecr-batchgetimage-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-ecr-deleterepository-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-ecr-describerepositories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-ecr-list-images-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-ecr-putimage-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

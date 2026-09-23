@@ -102,11 +102,6 @@ paths:
       - Amazon ECR Amazon Elastic Container Registry (ECR) API
 components:
   schemas:
-    CreateRepositoryResponse:
-      type: object
-      properties:
-        repository:
-          $ref: '#/components/schemas/Repository'
     Repository:
       type: object
       properties:
@@ -157,6 +152,11 @@ components:
           example:
             encryptionType: standard
             kmsKey: example-string
+    CreateRepositoryResponse:
+      type: object
+      properties:
+        repository:
+          $ref: '#/components/schemas/Repository'
   securitySchemes:
     aws_sigv4:
       type: apiKey
