@@ -4,15 +4,10 @@
     "_original/amazon-ecr-openapi.yml"
   ],
   "outputs": [
-    "amazon-ecr-batchgetimage-api-openapi.yml",
-    "amazon-ecr-deleterepository-api-openapi.yml",
-    "amazon-ecr-describerepositories-api-openapi.yml",
-    "amazon-ecr-listimages-api-openapi.yml",
-    "amazon-ecr-putimage-api-openapi.yml",
     "amazon-ecr-amazon-ecr-amazon-elastic-container-registry-ecr-api-api-openapi.yml"
   ],
   "archived": [
-    "deleted 1 superseded output(s) from the previous generation"
+    "deleted 5 superseded output(s) from the previous generation"
   ],
   "errors": [],
   "warnings": [],
@@ -20,9 +15,14 @@
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "amazon-ecr-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "amazon-ecr-openapi.yml: tagged paths POST / -> Amazon ECR Amazon Elastic Container Registry (ECR) API",
+    "amazon-ecr-openapi.yml: tagged paths POST /#DescribeRepositories -> Amazon ECR Amazon Elastic Container Registry (ECR) API",
+    "amazon-ecr-openapi.yml: tagged paths POST /#DeleteRepository -> Amazon ECR Amazon Elastic Container Registry (ECR) API",
+    "amazon-ecr-openapi.yml: tagged paths POST /#PutImage -> Amazon ECR Amazon Elastic Container Registry (ECR) API",
+    "amazon-ecr-openapi.yml: tagged paths POST /#BatchGetImage -> Amazon ECR Amazon Elastic Container Registry (ECR) API",
+    "amazon-ecr-openapi.yml: tagged paths POST /#ListImages -> Amazon ECR Amazon Elastic Container Registry (ECR) API",
     "amazon-ecr-openapi.yml: declared missing tag: Amazon ECR Amazon Elastic Container Registry (ECR) API",
-    "superseded outputs removed: amazon-ecr-list-images-api-openapi.yml",
-    "apis.yml register: written (+1 apis, 6 total)"
+    "superseded outputs removed: amazon-ecr-batchgetimage-api-openapi.yml, amazon-ecr-deleterepository-api-openapi.yml, amazon-ecr-describerepositories-api-openapi.yml, amazon-ecr-list-images-api-openapi.yml, amazon-ecr-putimage-api-openapi.yml",
+    "apis.yml register: written (+0 apis, 1 total)"
   ],
   "skipped": [
     "amazon-ecr-amazon-ecr-amazon-elastic-container-registry-ecr-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
