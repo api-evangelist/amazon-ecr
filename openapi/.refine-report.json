@@ -6,9 +6,7 @@
   "outputs": [
     "amazon-ecr-amazon-ecr-amazon-elastic-container-registry-ecr-api-api-openapi.yml"
   ],
-  "archived": [
-    "deleted 5 superseded output(s) from the previous generation"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
@@ -21,15 +19,9 @@
     "amazon-ecr-openapi.yml: tagged paths POST /#BatchGetImage -> Amazon ECR Amazon Elastic Container Registry (ECR) API",
     "amazon-ecr-openapi.yml: tagged paths POST /#ListImages -> Amazon ECR Amazon Elastic Container Registry (ECR) API",
     "amazon-ecr-openapi.yml: declared missing tag: Amazon ECR Amazon Elastic Container Registry (ECR) API",
-    "superseded outputs removed: amazon-ecr-batchgetimage-api-openapi.yml, amazon-ecr-deleterepository-api-openapi.yml, amazon-ecr-describerepositories-api-openapi.yml, amazon-ecr-list-images-api-openapi.yml, amazon-ecr-putimage-api-openapi.yml",
-    "apis.yml register: written (+0 apis, 1 total)"
+    "apis.yml register: already-registered"
   ],
   "skipped": [
-    "amazon-ecr-amazon-ecr-amazon-elastic-container-registry-ecr-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "amazon-ecr-batchgetimage-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "amazon-ecr-deleterepository-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "amazon-ecr-describerepositories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "amazon-ecr-list-images-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "amazon-ecr-putimage-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+    "amazon-ecr-amazon-ecr-amazon-elastic-container-registry-ecr-api-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }
