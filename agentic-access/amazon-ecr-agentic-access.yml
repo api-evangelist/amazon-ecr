@@ -1,68 +1,25 @@
-generated: '2026-07-15'
+generated: '2026-09-23'
 method: generated
-source: openapi/amazon-ecr-openapi.yml
+source: openapi/amazon-ecr-amazon-ecr-amazon-elastic-container-registry-ecr-api-api-openapi.yml,
+  openapi/amazon-ecr-batchgetimage-api-openapi.yml, openapi/amazon-ecr-deleterepository-api-openapi.yml,
+  openapi/amazon-ecr-describerepositories-api-openapi.yml, openapi/amazon-ecr-list-images-api-openapi.yml,
+  openapi/amazon-ecr-putimage-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 6
   by_action_class:
-    acting: 6
+    acting: 5
+    connected: 1
   by_consequence:
-    write: 6
+    write: 5
+    read: 1
   human_in_the_loop_required: 0
 operations:
 - path: /
   method: post
   operationId: createRepository
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /#DescribeRepositories
-  method: post
-  operationId: describeRepositories
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /#DeleteRepository
-  method: post
-  operationId: deleteRepository
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /#PutImage
-  method: post
-  operationId: putImage
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -92,9 +49,51 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /#DeleteRepository
+  method: post
+  operationId: deleteRepository
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /#DescribeRepositories
+  method: post
+  operationId: describeRepositories
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /#ListImages
   method: post
   operationId: listImages
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /#PutImage
+  method: post
+  operationId: putImage
   x-agentic-access:
     action-class: acting
     consequence: write
