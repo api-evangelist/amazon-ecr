@@ -1,0 +1,14 @@
+fetched: '2026-10-13'
+method: fetched
+source: https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html
+page: https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html
+file: amazon-ecr-oci-distribution-1.md
+bytes: 5205
+sha256: ec2bf267cb97bfa29b763784c3b4eaeae93b3f4d9d64b228ce857a258ebf5fb3
+anchor: open-container-initiative
+shape: oci-distribution
+classification: declares-compatibility
+quote: Amazon Elastic Container Registry (Amazon ECR) is an AWS managed container image registry service that is
+  secure, scalable, and reliable. Amazon ECR supports private repositories with resource-based permissions using
+  AWS IAM. This is so that specified users or Amazon EC2 instances can access your co
+note: text extracted from the provider's own page (tags stripped), saved for evidence

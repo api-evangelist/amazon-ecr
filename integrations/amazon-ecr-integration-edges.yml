@@ -1,0 +1,20 @@
+edges:
+- partner_name: Open Container Initiative
+  partner: open-container-initiative
+  partner_match: shape-anchor
+  channel: provider-built
+  relationship: compatible
+  direction: provider-built
+  shape: oci-distribution
+  type: docs
+  degree: declared-unqualified
+  evidence: https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html
+  evidence_kind: own-docs
+  evidence_file: https://github.com/api-evangelist/amazon-ecr/blob/main/evidence/compatibility/amazon-ecr-oci-distribution-1.md
+  quote: Amazon Elastic Container Registry (Amazon ECR) is an AWS managed container image registry service that
+    is secure, scalable, and reliable. Amazon ECR supports private repositories with resource-based permissions
+    using AWS IAM. This is so tha
+  detected_by: sweep-shape-compat.py
+  first_seen: '2026-10-13'
+generated: '2026-10-13'
+method: searched
