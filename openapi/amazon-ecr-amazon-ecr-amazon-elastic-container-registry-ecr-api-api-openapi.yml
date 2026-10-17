@@ -386,6 +386,11 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    CreateRepositoryResponse:
+      type: object
+      properties:
+        repository:
+          $ref: '#/components/schemas/Repository'
     Repository:
       type: object
       properties:
@@ -436,11 +441,6 @@ components:
           example:
             encryptionType: standard
             kmsKey: example-string
-    CreateRepositoryResponse:
-      type: object
-      properties:
-        repository:
-          $ref: '#/components/schemas/Repository'
     DescribeRepositoriesResponse:
       type: object
       properties:
