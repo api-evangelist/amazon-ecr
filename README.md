@@ -1,4 +1,4 @@
-# Amazon ECR (amazon-ecr)
+# Amazon ECR
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,75 +66,198 @@
 
 Amazon Elastic Container Registry (ECR) is a fully managed container registry that makes it easy to store, manage, share, and deploy container images and artifacts. ECR eliminates the need to operate your own container repositories or worry about scaling the underlying infrastructure, and integrates with Amazon ECS and Amazon EKS for simplified development to production workflows.
 
-**APIs.json:** [https://aws.amazon.com/ecr/](https://aws.amazon.com/ecr/)
+**Areas:** Amazon Web Services · AWS · Container Images · Container Registry · Containers · Docker · ECR · OCI
 
-## Tags
+## Amazon ECR on APIs.io
 
-- Amazon Web Services
-- AWS
-- Container Images
-- Container Registry
-- Containers
-- Docker
-- ECR
-- OCI
+Everything profiled for Amazon ECR is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/amazon-ecr/](https://apis.io/providers/amazon-ecr/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (10)
 
-- **Created:** 2024-01-15
-- **Modified:** 2026-05-19
+- [Amazon ECR Amazon ECR Amazon Elastic Container Registry (ECR) API](https://apis.io/apis/amazon-ecr/amazon-ecr-amazon-ecr-amazon-elastic-container-registry-ecr-api-api/) — The Amazon ECR Amazon Elastic Container Registry (ECR) API API from Amazon ECR — 1 operation(s) for amazon ecr amazon elastic container registry (ecr) api.
+- [Amazon ECR Ecr Lifecycle Policy API](https://apis.io/apis/amazon-ecr/amazon-ecr-lifecycle-policy-api/) — The Ecr Lifecycle Policy API from Amazon ECR — 3 operation(s) for ecr lifecycle policy.
+- [Amazon ECR Ecr Operations API](https://apis.io/apis/amazon-ecr/amazon-ecr-operations-api/) — The Ecr Operations API from Amazon ECR — 29 operation(s) for ecr operations.
+- [Amazon ECR Ecr Pull Through Cache Rule API](https://apis.io/apis/amazon-ecr/amazon-ecr-pull-through-cache-rule-api/) — The Ecr Pull Through Cache Rule API from Amazon ECR — 5 operation(s) for ecr pull through cache rule.
+- [Amazon ECR Ecr Pull Time Update Exclusion API](https://apis.io/apis/amazon-ecr/amazon-ecr-pull-time-update-exclusion-api/) — The Ecr Pull Time Update Exclusion API from Amazon ECR — 3 operation(s) for ecr pull time update exclusion.
+- [Amazon ECR Ecr Registry Policy API](https://apis.io/apis/amazon-ecr/amazon-ecr-registry-policy-api/) — The Ecr Registry Policy API from Amazon ECR — 3 operation(s) for ecr registry policy.
+- [Amazon ECR Ecr Replication Backfill API](https://apis.io/apis/amazon-ecr/amazon-ecr-replication-backfill-api/) — The Ecr Replication Backfill API from Amazon ECR — 3 operation(s) for ecr replication backfill.
+- [Amazon ECR Ecr Repository Creation Template API](https://apis.io/apis/amazon-ecr/amazon-ecr-repository-creation-template-api/) — The Ecr Repository Creation Template API from Amazon ECR — 4 operation(s) for ecr repository creation template.
+- [Amazon ECR Ecr Repository Policy API](https://apis.io/apis/amazon-ecr/amazon-ecr-repository-policy-api/) — The Ecr Repository Policy API from Amazon ECR — 3 operation(s) for ecr repository policy.
+- [Amazon ECR Ecr Signing Configuration API](https://apis.io/apis/amazon-ecr/amazon-ecr-signing-configuration-api/) — The Ecr Signing Configuration API from Amazon ECR — 3 operation(s) for ecr signing configuration.
 
-## APIs
+### Published properties
 
-### Amazon ECR API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-API for managing Amazon ECR repositories, images, and related resources.
+#### Arazzo workflows (6)
 
-- **Base URL:** `https://api.ecr.amazonaws.com`
+Multi-step workflows that chain operations into a business task.
 
-#### Properties
+- [Amazon ECR Decommission Repository](https://apis.io/arazzos/amazon-ecr/amazon-ecr-decommission-repository-workflow/)
+- [Amazon ECR Ensure Repository and Seed Image](https://apis.io/arazzos/amazon-ecr/amazon-ecr-ensure-repository-and-seed-image-workflow/)
+- [Amazon ECR Image Inventory](https://apis.io/arazzos/amazon-ecr/amazon-ecr-image-inventory-workflow/)
+- [Amazon ECR Provision Repository](https://apis.io/arazzos/amazon-ecr/amazon-ecr-provision-repository-workflow/)
+- [Amazon ECR Publish Image](https://apis.io/arazzos/amazon-ecr/amazon-ecr-publish-image-workflow/)
+- [Amazon ECR Registry Audit](https://apis.io/arazzos/amazon-ecr/amazon-ecr-registry-audit-workflow/)
 
-- [Documentation](https://docs.aws.amazon.com/AmazonECR/latest/userguide/)
-- [OpenAPI](openapi/amazon-ecr-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/amazon-ecr.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/amazon-ecr.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [OpenAPI](https://api.apis.guru/v2/specs/amazonaws.com/ecr/2015-09-21/openapi.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [JSON Schema](json-schema/amazon-ecr-repository-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/amazon-ecr-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Pricing](https://aws.amazon.com/ecr/pricing/)
-- [Getting Started](https://aws.amazon.com/ecr/getting-started/)
-- [F A Q](https://aws.amazon.com/ecr/faqs/)
-- [Documentation](https://docs.aws.amazon.com/AmazonECR/latest/userguide/)
-- [API Reference](https://docs.aws.amazon.com/AmazonECR/latest/APIReference/)
-- [Documentation](https://docs.aws.amazon.com/cli/latest/reference/ecr/)
-- [Security](https://docs.aws.amazon.com/AmazonECR/latest/userguide/security.html)
-- [JSON Structure](json-structure/amazon-ecr-repository-structure.json)
-- [Example](examples/amazon-ecr-repository-example.json)
+#### Agentic access (1)
 
-## Common Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Arazzo Workflows](arazzo/) — [Arazzo Specification](https://spec.openapis.org/arazzo/latest.html)
-- [Portal](https://aws.amazon.com/)
-- [Developer Portal](https://aws.amazon.com/)
+- [Amazon Ecr Agentic Access](https://apis.io/agentic-access/amazon-ecr/amazon-ecr-agentic-access/)
+
+#### JSON Schema (4)
+
+The data models the API reads and writes.
+
+- [Amazon ECR Repository](https://apis.io/schemas/amazon-ecr/amazon-ecr-repository/)
+- [CreateRepositoryResponse](https://apis.io/schemas/amazon-ecr/ecr-openapi-create-repository-response/)
+- [DescribeRepositoriesResponse](https://apis.io/schemas/amazon-ecr/ecr-openapi-describe-repositories-response/)
+- [Repository](https://apis.io/schemas/amazon-ecr/ecr-openapi-repository/)
+
+#### JSON Structure (4)
+
+Data models expressed in JSON Structure.
+
+- [Amazon Ecr Repository Structure](https://apis.io/json-structure/amazon-ecr/amazon-ecr-repository-structure/)
+- [Ecr Openapi Create Repository Response Structure](https://apis.io/json-structure/amazon-ecr/ecr-openapi-create-repository-response-structure/)
+- [Ecr Openapi Describe Repositories Response Structure](https://apis.io/json-structure/amazon-ecr/ecr-openapi-describe-repositories-response-structure/)
+- [Ecr Openapi Repository Structure](https://apis.io/json-structure/amazon-ecr/ecr-openapi-repository-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Amazon Ecr Context](https://apis.io/jsonld/amazon-ecr/amazon-ecr-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Amazon Ecr Vocabulary](https://apis.io/vocabularies/amazon-ecr/amazon-ecr-vocabulary/)
+
+#### Examples (4)
+
+Example requests and responses.
+
+- [Amazon Ecr Repository Example](https://apis.io/examples/amazon-ecr/amazon-ecr-repository-example/)
+- [Ecr Openapi Create Repository Response Example](https://apis.io/examples/amazon-ecr/ecr-openapi-create-repository-response-example/)
+- [Ecr Openapi Describe Repositories Response Example](https://apis.io/examples/amazon-ecr/ecr-openapi-describe-repositories-response-example/)
+- [Ecr Openapi Repository Example](https://apis.io/examples/amazon-ecr/ecr-openapi-repository-example/)
+
+#### Collections (8)
+
+Postman and Open Collection request collections.
+
+- [Amazon ECR Amazon Elastic Container Registry (ECR) API](https://apis.io/collections/amazon-ecr/open-amazon-ecr/)
+- [Amazon ECR Amazon Elastic Container Registry (ECR) Amazon ECR Amazon Elastic Container Registry (ECR) API API](https://apis.io/collections/amazon-ecr/open-amazon-ecr-amazon-ecr-amazon-elastic-container-registry-ecr-api-api/)
+- [Amazon ECR Amazon Elastic Container Registry (ECR) Amazon ECR Amazon Elastic Container Registry (ECR) API #BatchGetImage API](https://apis.io/collections/amazon-ecr/open-amazon-ecr-batchgetimage-api/)
+- [Amazon ECR Amazon Elastic Container Registry (ECR) Amazon ECR Amazon Elastic Container Registry (ECR) API #DeleteRepository API](https://apis.io/collections/amazon-ecr/open-amazon-ecr-deleterepository-api/)
+- [Amazon ECR Amazon Elastic Container Registry (ECR) Amazon ECR Amazon Elastic Container Registry (ECR) API #DescribeRepositories API](https://apis.io/collections/amazon-ecr/open-amazon-ecr-describerepositories-api/)
+- [Amazon ECR Amazon Elastic Container Registry (ECR) Amazon ECR Amazon Elastic Container Registry (ECR) API #ListImages API](https://apis.io/collections/amazon-ecr/open-amazon-ecr-listimages-api/)
+- [Amazon ECR Amazon Elastic Container Registry (ECR) Amazon ECR Amazon Elastic Container Registry (ECR) API #PutImage API](https://apis.io/collections/amazon-ecr/open-amazon-ecr-putimage-api/)
+- [Amazon ECR Amazon Elastic Container Registry (ECR) API](https://apis.io/collections/amazon-ecr/postman-amazon-ecr/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Amazon ECR — jsonschema rules](https://apis.io/rules/amazon-ecr/amazon-ecr-jsonschema-spectral-rules/)
+- [Amazon ECR API Rules](https://apis.io/rules/amazon-ecr/amazon-ecr-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Amazon Ecr Authentication](https://apis.io/security/amazon-ecr/amazon-ecr-authentication/)
+- [Amazon Ecr Domain Security](https://apis.io/security/amazon-ecr/amazon-ecr-domain-security/)
+- [Amazon Ecr Trust Center](https://apis.io/security/amazon-ecr/amazon-ecr-trust-center/)
+- [Amazon Ecr Vulnerability Disclosure](https://apis.io/security/amazon-ecr/amazon-ecr-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Amazon Ecr Plans Pricing](https://apis.io/plans/amazon-ecr/amazon-ecr-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Amazon Ecr Rate Limits](https://apis.io/rate-limits/amazon-ecr/amazon-ecr-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Amazon Ecr Finops](https://apis.io/finops/amazon-ecr/amazon-ecr-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://aws.amazon.com/ecr/)
 - [Documentation](https://docs.aws.amazon.com/)
-- [Terms of Service](https://aws.amazon.com/service-terms/)
-- [Privacy Policy](https://aws.amazon.com/privacy/)
 - [Support](https://aws.amazon.com/support/)
 - [Blog](https://aws.amazon.com/blogs/)
-- [GitHub Organization](https://github.com/aws)
-- [Console](https://console.aws.amazon.com/)
-- [Sign Up](https://portal.aws.amazon.com/billing/signup)
-- [Login](https://signin.aws.amazon.com/)
-- [Status Page](https://status.aws.amazon.com/)
-- [Knowledge Center](https://repost.aws/knowledge-center)
-- [YouTube](https://www.youtube.com/user/AmazonWebServices)
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/amazon-web-services)
-- [Contact](https://aws.amazon.com/contact-us/)
 - [Security](https://aws.amazon.com/security/)
 - [Compliance](https://aws.amazon.com/compliance/)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [Spectral Rules](rules/amazon-ecr-spectral-rules.yml)
-- [Vocabulary](vocabulary/amazon-ecr-vocabulary.yaml)
-- [Integrations](https://aws.amazon.com/marketplace)
+- [Terms of service](https://aws.amazon.com/service-terms/)
+- [Privacy policy](https://aws.amazon.com/privacy/)
+- [GitHub](https://github.com/aws)
+- [Status](https://status.aws.amazon.com/)
+
+## API Evangelist rating
+
+**Kin Score 56.9** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 58.9 |
+| Contract quality | 60.8 |
+| Contract governance | 27.3 |
+| Operational transparency | 36.8 |
+| Developer ergonomics | 65.5 |
+| Access clarity | 61.8 |
+
+**Agent readiness 24.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/amazon-ecr/](https://apis.io/providers/amazon-ecr/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Amazon ECR: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/amazon-ecr/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
