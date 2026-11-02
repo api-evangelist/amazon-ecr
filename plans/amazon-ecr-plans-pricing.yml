@@ -1,0 +1,95 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-28'
+method: searched
+source: https://aws.amazon.com/ecr/pricing/
+sources:
+- https://aws.amazon.com/ecr/pricing/
+provenance:
+  tool: engine/economics/harvest_pricing.py
+  run: 20261028T141238
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: usage-other
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-28'
+published: true
+note: 'Most price values (ECR Standard/Archive storage, retrieval, private repo data transfer, managed
+  signing, DSSE-KMS) render as unresolved pricing tokens in the page text, so no numbers are available
+  for them. Free Tier: 500 MB/month private storage for one year, 50 GB/month public storage, 500 GB (anonymous)
+  or 5 TB (with account) egress free; up to $200 AWS Free Tier credits. Pricing examples cite $0.10 per
+  GB storage and $0.09 per GB data transfer out.'
+plan_count: 4
+currency: USD
+plans:
+- name: Public repository data transfer OUT - without AWS account (500 GB/month)
+  price_text: $0.00 per GB
+  price: 0.0
+  currency: USD
+  period: month
+  unit: GB
+  included_quota: 500 GB / month
+  overage: Greater than 5 TB / month to non AWS Regions $0.09 per GB
+- name: Public repository data transfer OUT - greater than 5 TB to non AWS Regions
+  price_text: $0.09 per GB
+  price: 0.09
+  currency: USD
+  period: month
+  unit: GB
+  included_quota: 5 TB / month free when using an AWS Account
+- name: Public repository data transfer IN
+  price_text: $0.00 per GB
+  price: 0.0
+  currency: USD
+  period: month
+  unit: GB
+  included_quota: All data transfer in
+- name: Encryption SSE-S3 / SSE-KMS
+  price_text: Free
+  period: month
+  unit: per GB
+rate_limit_statements:
+- Data transferred out from public repositories is limited by source IP when an AWS account is not used.
+- For data transfer exceeding 500 TB per month, please contact us
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - metered
+  units:
+  - data
+  plans:
+  - name: Public repository data transfer OUT - without AWS account (500 GB/month)
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - data
+    periods:
+    - month
+  - name: Public repository data transfer OUT - greater than 5 TB to non AWS Regions
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - data
+    periods:
+    - month
+  - name: Public repository data transfer IN
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - data
+    periods:
+    - month
+  - name: Encryption SSE-S3 / SSE-KMS
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - data
+    periods:
+    - month
