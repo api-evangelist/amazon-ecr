@@ -1,8 +1,9 @@
 name: Amazon ECR
-description: Amazon Elastic Container Registry (ECR) is a fully managed container registry that makes
-  it easy to store, manage, share, and deploy container images and artifacts. ECR eliminates the need
-  to operate your own container repositories or worry about scaling the underlying infrastructure, and
-  integrates with Amazon ECS and Amazon EKS for simplified development to production workflows.
+
+description: Amazon Elastic Container Registry (ECR) is a fully managed container registry that makes it easy to store, manage, share, and deploy
+  container images and artifacts. ECR eliminates the need to operate your own container repositories or worry about scaling the underlying infrastructure,
+  and integrates with Amazon ECS and Amazon EKS for simplified development to production workflows.
+
 deliveryModel:
   model: saas
   open_source: false
@@ -15,7 +16,9 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+
 specificationVersion: '0.23'
+
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -26,17 +29,22 @@ accessModel:
   gated_source:
   - onboarding
   label: Freemium · Self-serve signup
-  confidence: medium
+  confidence: high
   source:
   - plans
   - authentication
+  - rate-limits
   - security
-  generated: '2026-11-06'
+  generated: '2026-11-13'
   method: derived
 image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
+
 url: https://aws.amazon.com/ecr/
+
 created: '2024-01-15'
+
 modified: '2026-09-16'
+
 tags:
 - Amazon Web Services
 - Container Images
@@ -54,130 +62,52 @@ tags_raw:
 - Docker
 - ECR
 - OCI
-apis:
-- aid: amazon-ecr:amazon-ecr-amazon-ecr-amazon-elastic-container-registry-ecr-api-api
-  name: Amazon ECR Amazon ECR Amazon Elastic Container Registry (ECR) API
-  description: >-
-    The Amazon ECR Amazon Elastic Container Registry (ECR) API API from Amazon ECR — 1 operation(s) for
-    amazon ecr amazon elastic container registry (ecr) api.
-  baseURL: https://api.ecr.amazonaws.com
-  tags: []
-  tags_raw:
-  - Amazon ECR Amazon Elastic Container Registry (ECR) API
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-ecr-amazon-ecr-amazon-elastic-container-registry-ecr-api-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/AmazonECR/latest/userguide/
-  - type: JSONSchema
-    url: json-schema/amazon-ecr-repository-schema.json
-  - type: JSONLD
-    url: json-ld/amazon-ecr-context.jsonld
-  - type: Pricing
-    url: https://aws.amazon.com/ecr/pricing/
-  - type: GettingStarted
-    url: https://aws.amazon.com/ecr/getting-started/
-  - type: FAQ
-    url: https://aws.amazon.com/ecr/faqs/
-  - type: APIReference
-    url: https://docs.aws.amazon.com/AmazonECR/latest/APIReference/
-  - type: Documentation
-    url: https://docs.aws.amazon.com/cli/latest/reference/ecr/
-  - type: Security
-    url: https://docs.aws.amazon.com/AmazonECR/latest/userguide/security.html
-  - type: JSONStructure
-    url: json-structure/amazon-ecr-repository-structure.json
-  - type: Examples
-    url: examples/amazon-ecr-repository-example.json
-- aid: amazon-ecr:amazon-ecr-lifecycle-policy-api
-  name: Amazon ECR Ecr Lifecycle Policy API
-  description: The Ecr Lifecycle Policy API from Amazon ECR — 3 operation(s) for ecr lifecycle policy.
-  baseURL: https://api.ecr.amazonaws.com
-  tags:
-  - Ecr Lifecycle Policy
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-ecr-lifecycle-policy-api-openapi.yml
-- aid: amazon-ecr:amazon-ecr-operations-api
-  name: Amazon ECR Ecr Operations API
-  description: The Ecr Operations API from Amazon ECR — 29 operation(s) for ecr operations.
-  baseURL: https://api.ecr.amazonaws.com
-  tags:
-  - Ecr Operations
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-ecr-operations-api-openapi.yml
-- aid: amazon-ecr:amazon-ecr-pull-through-cache-rule-api
-  name: Amazon ECR Ecr Pull Through Cache Rule API
-  description: >-
-    The Ecr Pull Through Cache Rule API from Amazon ECR — 5 operation(s) for ecr pull through cache rule.
-  baseURL: https://api.ecr.amazonaws.com
-  tags:
-  - Ecr Pull Through Cache Rule
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-ecr-pull-through-cache-rule-api-openapi.yml
-- aid: amazon-ecr:amazon-ecr-pull-time-update-exclusion-api
-  name: Amazon ECR Ecr Pull Time Update Exclusion API
-  description: >-
-    The Ecr Pull Time Update Exclusion API from Amazon ECR — 3 operation(s) for ecr pull time update exclusion.
-  baseURL: https://api.ecr.amazonaws.com
-  tags:
-  - Ecr Pull Time Update Exclusion
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-ecr-pull-time-update-exclusion-api-openapi.yml
-- aid: amazon-ecr:amazon-ecr-registry-policy-api
-  name: Amazon ECR Ecr Registry Policy API
-  description: The Ecr Registry Policy API from Amazon ECR — 3 operation(s) for ecr registry policy.
-  baseURL: https://api.ecr.amazonaws.com
-  tags:
-  - Ecr Registry Policy
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-ecr-registry-policy-api-openapi.yml
-- aid: amazon-ecr:amazon-ecr-replication-backfill-api
-  name: Amazon ECR Ecr Replication Backfill API
-  description: >-
-    The Ecr Replication Backfill API from Amazon ECR — 3 operation(s) for ecr replication backfill.
-  baseURL: https://api.ecr.amazonaws.com
-  tags:
-  - Ecr Replication Backfill
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-ecr-replication-backfill-api-openapi.yml
-- aid: amazon-ecr:amazon-ecr-repository-creation-template-api
-  name: Amazon ECR Ecr Repository Creation Template API
-  description: >-
-    The Ecr Repository Creation Template API from Amazon ECR — 4 operation(s) for ecr repository creation
-    template.
-  baseURL: https://api.ecr.amazonaws.com
-  tags:
-  - Ecr Repository Creation Template
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-ecr-repository-creation-template-api-openapi.yml
-- aid: amazon-ecr:amazon-ecr-repository-policy-api
-  name: Amazon ECR Ecr Repository Policy API
-  description: >-
-    The Ecr Repository Policy API from Amazon ECR — 3 operation(s) for ecr repository policy.
-  baseURL: https://api.ecr.amazonaws.com
-  tags:
-  - Ecr Repository Policy
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-ecr-repository-policy-api-openapi.yml
-- aid: amazon-ecr:amazon-ecr-signing-configuration-api
-  name: Amazon ECR Ecr Signing Configuration API
-  description: >-
-    The Ecr Signing Configuration API from Amazon ECR — 3 operation(s) for ecr signing configuration.
-  baseURL: https://api.ecr.amazonaws.com
-  tags:
-  - Ecr Signing Configuration
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-ecr-signing-configuration-api-openapi.yml
+
 common:
+- type: Spectral
+  url: rules/amazon-ecr-spectral-rules.yml
+- type: Spectral
+  url: rules/amazon-ecr-rules.yml
+- type: Spectral
+  url: rules/amazon-ecr-jsonschema-spectral-rules.yml
+- type: Vocabulary
+  url: vocabulary/amazon-ecr-vocabulary.yml
+- type: DataModel
+  url: data-model/amazon-ecr-data-model.yml
+- type: CLI
+  url: cli/amazon-ecr-cli.yml
+- type: Conventions
+  url: conventions/amazon-ecr-conventions.yml
+- type: Lifecycle
+  url: lifecycle/amazon-ecr-lifecycle.yml
+- type: ErrorCatalog
+  url: errors/amazon-ecr-problem-types.yml
+- type: Conformance
+  url: conformance/amazon-ecr-conformance.yml
+- type: LLMsTxt
+  url: llms/amazon-ecr-llms.txt
+- type: SecurityTxt
+  url: well-known/amazon-ecr-security.txt
+- type: SecurityTxt
+  url: well-known/amazon-ecr-repost-security.txt
+- type: WellKnown
+  url: well-known/amazon-ecr-well-known.yml
+- type: Hosts
+  url: hosts/amazon-ecr-hosts.yml
+- type: IntegrationEdges
+  url: integrations/amazon-ecr-integration-edges.yml
+- type: Vendors
+  url: vendors/amazon-ecr-vendors.yml
+- type: SDKs
+  url: packages/amazon-ecr-packages.yml
+- type: Packages
+  url: packages/amazon-ecr-packages.yml
+- type: Newsroom
+  url: https://aws.amazon.com/media/?nc2=h_sol_ind_med
+- type: APIReference
+  url: https://docs.aws.amazon.com/cli/latest/reference/ecr/index.html
+- type: GettingStarted
+  url: https://docs.aws.amazon.com/AmazonRDS/latest/gettingstartedguide/what-is-rds
 - type: Plans
   url: plans/amazon-ecr-plans-pricing.yml
 - type: RateLimits
@@ -255,11 +185,9 @@ common:
 - type: Features
   data:
   - name: Fully Managed Registry
-    description: Eliminate the need to operate your own container repositories or worry about scaling
-      infrastructure.
+    description: Eliminate the need to operate your own container repositories or worry about scaling infrastructure.
   - name: Image Vulnerability Scanning
-    description: Automated vulnerability assessment via Amazon Inspector integration for continuous image
-      security.
+    description: Automated vulnerability assessment via Amazon Inspector integration for continuous image security.
   - name: Lifecycle Policies
     description: Automatically expire and delete images based on rules to reduce storage costs.
   - name: Cross-Account Replication
@@ -300,9 +228,245 @@ common:
   url: vocabulary/amazon-ecr-vocabulary.yaml
 - type: Integrations
   url: https://aws.amazon.com/marketplace
+- type: UsageTerms
+  url: terms/amazon-ecr-terms-of-service.yml
+- type: DataProcessing
+  url: privacy/amazon-ecr-privacy-policy.yml
+- type: Attestations
+  url: compliance/amazon-ecr-compliance.yml
+- type: Eligibility
+  url: eligibility/amazon-ecr-eligibility.yml
+- type: AIPreferences
+  url: ai-preferences/amazon-ecr-ai-preferences.yml
+
+apis:
+- aid: amazon-ecr:amazon-ecr-amazon-ecr-amazon-elastic-container-registry-ecr-api-api
+  name: Amazon ECR Amazon ECR Amazon Elastic Container Registry (ECR) API
+  description: The Amazon ECR Amazon Elastic Container Registry (ECR) API API from Amazon ECR — 1 operation(s) for amazon ecr amazon elastic container
+    registry (ecr) api.
+  baseURL: https://api.ecr.amazonaws.com
+  tags: []
+  tags_raw:
+  - Amazon ECR Amazon Elastic Container Registry (ECR) API
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ecr-amazon-ecr-amazon-elastic-container-registry-ecr-api-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/AmazonECR/latest/userguide/
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-repository-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-ecr-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/ecr/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/ecr/getting-started/
+  - type: FAQ
+    url: https://aws.amazon.com/ecr/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/AmazonECR/latest/APIReference/
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cli/latest/reference/ecr/
+  - type: Security
+    url: https://docs.aws.amazon.com/AmazonECR/latest/userguide/security.html
+  - type: JSONStructure
+    url: json-structure/amazon-ecr-repository-structure.json
+  - type: Examples
+    url: examples/amazon-ecr-repository-example.json
+- aid: amazon-ecr:amazon-ecr-lifecycle-policy-api
+  name: Amazon ECR Ecr Lifecycle Policy API
+  description: The Ecr Lifecycle Policy API from Amazon ECR — 3 operation(s) for ecr lifecycle policy.
+  baseURL: https://api.ecr.amazonaws.com
+  tags:
+  - Ecr Lifecycle Policy
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ecr-lifecycle-policy-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-put-lifecycle-policy-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-delete-lifecycle-policy-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-get-lifecycle-policy-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-delete-lifecycle-policy-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-get-lifecycle-policy-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-put-lifecycle-policy-response-schema.json
+- aid: amazon-ecr:amazon-ecr-operations-api
+  name: Amazon ECR Ecr Operations API
+  description: The Ecr Operations API from Amazon ECR — 29 operation(s) for ecr operations.
+  baseURL: https://api.ecr.amazonaws.com
+  tags:
+  - Ecr Operations
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ecr-operations-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-describe-replication-backfill-results-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-describe-images-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-get-lifecycle-policy-preview-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-list-image-referrers-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-describe-replication-backfill-results-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-describe-image-tags-request-schema.json
+- aid: amazon-ecr:amazon-ecr-pull-through-cache-rule-api
+  name: Amazon ECR Ecr Pull Through Cache Rule API
+  description: The Ecr Pull Through Cache Rule API from Amazon ECR — 5 operation(s) for ecr pull through cache rule.
+  baseURL: https://api.ecr.amazonaws.com
+  tags:
+  - Ecr Pull Through Cache Rule
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ecr-pull-through-cache-rule-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-create-pull-through-cache-rule-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-describe-pull-through-cache-rules-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-validate-pull-through-cache-rule-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-create-pull-through-cache-rule-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-delete-pull-through-cache-rule-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-update-pull-through-cache-rule-request-schema.json
+- aid: amazon-ecr:amazon-ecr-pull-time-update-exclusion-api
+  name: Amazon ECR Ecr Pull Time Update Exclusion API
+  description: The Ecr Pull Time Update Exclusion API from Amazon ECR — 3 operation(s) for ecr pull time update exclusion.
+  baseURL: https://api.ecr.amazonaws.com
+  tags:
+  - Ecr Pull Time Update Exclusion
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ecr-pull-time-update-exclusion-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-list-pull-time-update-exclusions-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-list-pull-time-update-exclusions-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-register-pull-time-update-exclusion-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-deregister-pull-time-update-exclusion-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-register-pull-time-update-exclusion-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-deregister-pull-time-update-exclusion-response-schema.json
+- aid: amazon-ecr:amazon-ecr-registry-policy-api
+  name: Amazon ECR Ecr Registry Policy API
+  description: The Ecr Registry Policy API from Amazon ECR — 3 operation(s) for ecr registry policy.
+  baseURL: https://api.ecr.amazonaws.com
+  tags:
+  - Ecr Registry Policy
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ecr-registry-policy-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-put-registry-policy-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-delete-registry-policy-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-get-registry-policy-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-put-registry-policy-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-delete-registry-policy-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-get-registry-policy-request-schema.json
+- aid: amazon-ecr:amazon-ecr-replication-backfill-api
+  name: Amazon ECR Ecr Replication Backfill API
+  description: The Ecr Replication Backfill API from Amazon ECR — 3 operation(s) for ecr replication backfill.
+  baseURL: https://api.ecr.amazonaws.com
+  tags:
+  - Ecr Replication Backfill
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ecr-replication-backfill-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-list-replication-backfills-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-stop-replication-backfill-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-start-replication-backfill-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-list-replication-backfills-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-stop-replication-backfill-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-start-replication-backfill-request-schema.json
+- aid: amazon-ecr:amazon-ecr-repository-creation-template-api
+  name: Amazon ECR Ecr Repository Creation Template API
+  description: The Ecr Repository Creation Template API from Amazon ECR — 4 operation(s) for ecr repository creation template.
+  baseURL: https://api.ecr.amazonaws.com
+  tags:
+  - Ecr Repository Creation Template
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ecr-repository-creation-template-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-create-repository-creation-template-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-update-repository-creation-template-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-describe-repository-creation-templates-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-describe-repository-creation-templates-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-create-repository-creation-template-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-delete-repository-creation-template-response-schema.json
+- aid: amazon-ecr:amazon-ecr-repository-policy-api
+  name: Amazon ECR Ecr Repository Policy API
+  description: The Ecr Repository Policy API from Amazon ECR — 3 operation(s) for ecr repository policy.
+  baseURL: https://api.ecr.amazonaws.com
+  tags:
+  - Ecr Repository Policy
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ecr-repository-policy-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-set-repository-policy-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-delete-repository-policy-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-get-repository-policy-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-delete-repository-policy-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-get-repository-policy-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-set-repository-policy-response-schema.json
+- aid: amazon-ecr:amazon-ecr-signing-configuration-api
+  name: Amazon ECR Ecr Signing Configuration API
+  description: The Ecr Signing Configuration API from Amazon ECR — 3 operation(s) for ecr signing configuration.
+  baseURL: https://api.ecr.amazonaws.com
+  tags:
+  - Ecr Signing Configuration
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-ecr-signing-configuration-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-delete-signing-configuration-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-get-signing-configuration-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-put-signing-configuration-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-put-signing-configuration-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-delete-signing-configuration-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-ecr-get-signing-configuration-request-schema.json
+
 maintainer:
   name: Kin Lane
   email: kin@apievangelist.com
+
 integrations:
 - name: Sign in
 - name: Agent Mode
@@ -313,5 +477,12 @@ integrations:
 - name: Become a Channel Partner
 - name: Sell in AWS Marketplace
 - name: Manage Your Account
+
 x-parent: amazon-web-services
+
 x-relationship: product
+x-enrichment:
+  date: '2026-11-11'
+  status: enriched
+  artifacts_added: 5
+  pass: local-v6
